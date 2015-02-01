@@ -17,10 +17,7 @@ module.exports = function (grunt) {
   require('load-grunt-tasks')(grunt);
 
   // Configurable paths
-  var config = {
-    client: 'client'
-    //dist: 'dist'
-  };
+  var config = require('./config');
 
   // Define the configuration for all the tasks
   grunt.initConfig({
@@ -34,17 +31,17 @@ module.exports = function (grunt) {
         files: ['bower.json'],
         tasks: ['wiredep']
       },
-      js: {
-        files: ['<%= config.client %>/scripts/{,*/}*.js'],
+      jshint: {
+        files: [
+          '<%= config.client %>/scripts/{,*/}*.js',
+          '<%= config.server %>/**/*.js'
+        ],
         tasks: ['jshint'],
-        options: {
-          livereload: true
-        }
       },
-      jstest: {
-        files: ['test/spec/{,*/}*.js'],
-        tasks: ['test:watch']
-      },
+      // jstest: {
+      //   files: ['test/spec/{,*/}*.js'],
+      //   tasks: ['test:watch']
+      // },
       gruntfile: {
         files: ['Gruntfile.js']
       },
@@ -52,59 +49,86 @@ module.exports = function (grunt) {
         files: ['<%= config.client %>/styles/{,*/}*.css'],
         tasks: ['newer:copy:styles', 'autoprefixer']
       },
+      express: {
+        files: ['<%= config.server %>/**/*.js'],
+        tasks: ['express:livereload', 'wait'],
+        options: {
+          spawn: false
+        }
+      },
       livereload: {
         options: {
-          livereload: '<%= connect.options.livereload %>'
+          livereload: true
         },
         files: [
+          '<%= config.client %>/scripts/{,*/}*.js',
           '<%= config.client %>/{,*/}*.html',
+          '<%= config.client %>/images/{,*/}*',
           '.tmp/styles/{,*/}*.css',
-          '<%= config.client %>/images/{,*/}*'
         ]
       }
     },
 
-    // The actual grunt server settings
-    connect: {
+    // Express server
+    express: {
       options: {
-        port: 9000,
-        open: true,
-        livereload: 35729,
-        // Change this to '0.0.0.0' to access the server from outside
-        hostname: 'localhost'
+        port: config.port
       },
       livereload: {
         options: {
-          middleware: function(connect) {
-            return [
-              connect.static('.tmp'),
-              connect().use('/bower_components', connect.static('./bower_components')),
-              connect.static(config.client)
-            ];
-          }
+          script: '<%= config.server %>/app.js'
         }
       }
-      // test: {
-      //   options: {
-      //     open: false,
-      //     port: 9001,
-      //     middleware: function(connect) {
-      //       return [
-      //         connect.static('.tmp'),
-      //         connect.static('test'),
-      //         connect().use('/bower_components', connect.static('./bower_components')),
-      //         connect.static(config.client)
-      //       ];
-      //     }
-      //   }
-      // },
-      // dist: {
-      //   options: {
-      //     base: '<%= config.dist %>',
-      //     livereload: false
-      //   }
-      // }
     },
+
+    // Open a browser on load
+    open: {
+      server: {
+        url: 'http://localhost:<%= config.port %>'
+      }
+    },
+
+    // The actual grunt server settings
+    // connect: {
+    //   options: {
+    //     port: 9000,
+    //     open: true,
+    //     livereload: 35729,
+    //     // Change this to '0.0.0.0' to access the server from outside
+    //     hostname: 'localhost'
+    //   },
+    //   livereload: {
+    //     options: {
+    //       middleware: function(connect) {
+    //         return [
+    //           connect.static('.tmp'),
+    //           connect().use('/bower_components', connect.static('./bower_components')),
+    //           connect.static(config.client)
+    //         ];
+    //       }
+    //     }
+    //   }
+    //   test: {
+    //     options: {
+    //       open: false,
+    //       port: 9001,
+    //       middleware: function(connect) {
+    //         return [
+    //           connect.static('.tmp'),
+    //           connect.static('test'),
+    //           connect().use('/bower_components', connect.static('./bower_components')),
+    //           connect.static(config.client)
+    //         ];
+    //       }
+    //     }
+    //   },
+    //   dist: {
+    //     options: {
+    //       base: '<%= config.dist %>',
+    //       livereload: false
+    //     }
+    //   }
+    // },
 
     // Empties folders to start fresh
     clean: {
@@ -328,6 +352,17 @@ module.exports = function (grunt) {
     }
   });
 
+  // Used for delaying livereload until after server has restarted
+  grunt.registerTask('wait', function () {
+    grunt.log.ok('Waiting for server reload...');
+
+    var done = this.async();
+
+    setTimeout(function () {
+      grunt.log.writeln('Done waiting!');
+      done();
+    }, 1500);
+  });
 
   grunt.registerTask('serve', 'start the server and preview your app, --allow-remote for remote access', function (target) {
     if (grunt.option('allow-remote')) {
@@ -342,7 +377,9 @@ module.exports = function (grunt) {
       'wiredep',
       'concurrent:server',
       'autoprefixer',
-      'connect:livereload',
+      'express:livereload',
+      'wait',
+      'open',
       'watch'
     ]);
   });
