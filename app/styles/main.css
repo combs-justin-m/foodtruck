@@ -1,0 +1,99 @@
+body {
+  background-color: #F7F7F7;
+}
+
+.header {
+  background-color: #f7f7f7;
+  height: 50px;
+  width: 100%;
+  position: fixed;
+  margin-top: -5px;
+  z-index: 1;
+  opacity: 0.9;
+}
+
+.header a {
+  display: inline-block;
+}
+
+.header .nav {
+  margin-top: 5px;
+}
+
+.logo {
+  background-color: gray;
+  height: 50px;
+  width: 150px;
+}
+
+.twitter {
+  background-color: #5BD0F0;
+  height: 50px;
+  width: 50px;
+}
+
+.facebook {
+  background-color: #227FE3;
+  height: 50px;
+  width: 50px;
+}
+
+.instagram {
+  background-color: #D4AE48;
+  height: 50px;
+  width: 50px;
+}
+
+
+.header a { 
+  color: #393c3d;
+}
+
+.footer {
+  text-align: center;
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #dbdbdb;
+}
+
+
+/* Main marketing message and sign up button */
+.jumbotron {
+  height: 500px;
+  background-image: url("../images/truck_backgrnd.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+  color: #fff;
+}
+
+.jumbotron .container {
+  position: relative;
+}
+
+.jumbotron h1 {
+  font-size: 48px;
+  font-weight: bold;
+}
+
+
+.jumbotron .btn {
+  font-size: 21px;
+  padding: 14px 24px;
+}
+
+
+.menu {
+  border-top: 1px solid #dbdbdb;
+  border-bottom: 1px solid #dbdbdb;
+  background-color: #efefef;
+  padding-bottom: 20px;
+ }
+
+.catering {
+  padding-bottom: 20px;
+  border-top: 1px solid #dbdbdb;
+  border-bottom: 1px solid #dbdbdb;
+  background-color: #efefef;
+}
