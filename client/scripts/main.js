@@ -19,7 +19,7 @@ requirejs.config({
 });
 
 requirejs(['jquery', 'bootstrap'],
-function   ($, bootstrap) {
+function () {
 
 $(function () {
     $('a[href^="#"]').on('click', function(event) {
