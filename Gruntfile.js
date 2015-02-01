@@ -29,7 +29,7 @@ module.exports = function (grunt) {
     watch: {
       bower: {
         files: ['bower.json'],
-        tasks: ['wiredep']
+        tasks: ['bowerRequirejs']
       },
       jshint: {
         files: [
@@ -184,14 +184,24 @@ module.exports = function (grunt) {
       }
     },
 
-    // Automatically inject Bower components into the HTML file
-    wiredep: {
-      app: {
-        ignorePath: /^\/|\.\.\//,
-        src: ['<%= config.client %>/index.html'],
-        exclude: ['bower_components/bootstrap/dist/js/bootstrap.js']
+    // Automatically add bower moduels to require.js config
+    bowerRequirejs: {
+      all: {
+        rjsConfig: '<%= config.client %>/scripts/main.js',
+        options: {
+          baseUrl: '<$= config.client %>'
+        }
       }
     },
+
+    // Automatically inject Bower components into the HTML file
+    // wiredep: {
+    //   app: {
+    //     ignorePath: /^\/|\.\.\//,
+    //     src: ['<%= config.client %>/index.html'],
+    //     exclude: ['bower_components/bootstrap/dist/js/bootstrap.js']
+    //   }
+    // },
 
     // Renames files for browser caching purposes
     // rev: {
@@ -374,7 +384,7 @@ module.exports = function (grunt) {
 
     grunt.task.run([
       'clean:server',
-      'wiredep',
+      'bowerRequirejs',
       'concurrent:server',
       'autoprefixer',
       'express:livereload',

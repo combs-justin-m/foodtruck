@@ -1,7 +1,9 @@
 {
-  "name": "hello-world",
+  "name": "foodtruck",
   "private": true,
   "dependencies": {
-    "bootstrap": "~3.2.0"
+    "bootstrap": "~3.2.0",
+    "requirejs": "~2.1.15",
+    "jquery": "~2.1.3"
   }
 }
