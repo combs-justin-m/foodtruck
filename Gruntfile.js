@@ -45,6 +45,10 @@ module.exports = function (grunt) {
       gruntfile: {
         files: ['Gruntfile.js']
       },
+      templates: {
+        files: ['<%= config.client %>/scripts/**/*.html'],
+        tasks: ['handlebars']
+      },
       styles: {
         files: ['<%= config.client %>/styles/{,*/}*.css'],
         tasks: ['newer:copy:styles', 'autoprefixer']
@@ -149,6 +153,7 @@ module.exports = function (grunt) {
     jshint: {
       options: {
         jshintrc: '.jshintrc',
+        ignores: ['<%= config.client %>/**/*.template.js'],
         reporter: require('jshint-stylish')
       },
       all: [
@@ -187,9 +192,20 @@ module.exports = function (grunt) {
     // Automatically add bower moduels to require.js config
     bowerRequirejs: {
       all: {
-        rjsConfig: '<%= config.client %>/scripts/main.js',
+        rjsConfig: '<%= config.client %>/scripts/require-config.js',
         options: {
           baseUrl: '<$= config.client %>'
+        }
+      }
+    },
+
+    handlebars: {
+      options: {
+        amd: true
+      },
+      admin: {
+        files: {
+          '<%= config.client %>/scripts/templates.js': '<%= config.client %>/scripts/**/*.html'
         }
       }
     },
@@ -347,19 +363,19 @@ module.exports = function (grunt) {
     },
 
     // Run some tasks in parallel to speed up build process
-    concurrent: {
-      server: [
-        'copy:styles'
-      ]
-      // test: [
-      //   'copy:styles'
-      // ],
-      // dist: [
-      //   'copy:styles',
-      //   'imagemin',
-      //   'svgmin'
-      // ]
-    }
+  //   concurrent: {
+  //     server: [
+  //       'copy:styles'
+  //     ]
+  //     test: [
+  //       'copy:styles'
+  //     ],
+  //     dist: [
+  //       'copy:styles',
+  //       'imagemin',
+  //       'svgmin'
+  //     ]
+  //   }
   });
 
   // Used for delaying livereload until after server has restarted
@@ -385,7 +401,8 @@ module.exports = function (grunt) {
     grunt.task.run([
       'clean:server',
       'bowerRequirejs',
-      'concurrent:server',
+      'handlebars',
+      'copy:styles',
       'autoprefixer',
       'express:livereload',
       'wait',

@@ -1,42 +1,23 @@
-"use strict"
+'use strict';
 
-requirejs.config({
-    paths: {
-        bootstrap: '../bower_components/bootstrap/dist/js/bootstrap',
-        jquery: '../bower_components/jquery/dist/jquery',
-        requirejs: '../bower_components/requirejs/require'
-    },
-    packages: [
+require(['require-config'], function() {
+    require(['jquery', 'bootstrap'], function () {
+        $(function () {
+            $('a[href^="#"]').on('click', function(event) {
 
-    ],
-    shim: {
-        bootstrap: {
-            deps: [
-                'jquery'
-            ]
-        }
-    }
-});
+                var target = $( $(this).attr('href') );
 
-requirejs(['jquery', 'bootstrap'],
-function () {
+                console.log(target.length);
 
-$(function () {
-    $('a[href^="#"]').on('click', function(event) {
+                if( target.length ) {
+                    event.preventDefault();
+                    $('html, body').animate({
+                        scrollTop: target.offset().top
+                    }, 800);
+                }
 
-        var target = $( $(this).attr('href') );
-
-        console.log(target.length);
-
-        if( target.length ) {
-            event.preventDefault();
-            $('html, body').animate({
-                scrollTop: target.offset().top
-            }, 800);
-        }
-
+            });
+        });
     });
 });
 
-
-});
