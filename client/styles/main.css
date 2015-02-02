@@ -9,7 +9,7 @@ body {
   position: fixed;
   margin-top: -5px;
   z-index: 1;
-  opacity: 0.9;
+  opacity: 0.95;
 }
 
 .header a {
@@ -21,27 +21,33 @@ body {
 }
 
 .logo {
-  background-color: gray;
-  height: 50px;
-  width: 150px;
+  background-image: url("../images/Logosmall.png");
+  z-index: 1;
+  height: 75px;
+  width: 75px;
+  margin-top: 6px;
+  
 }
 
 .twitter {
-  background-color: #5BD0F0;
-  height: 50px;
-  width: 50px;
+  background-image: url("../images/twitter.png");
+  margin-bottom: 30px;
+  height: 48px;
+  width: 48px;
 }
 
 .facebook {
-  background-color: #227FE3;
-  height: 50px;
-  width: 50px;
+  background-image: url("../images/facebook.png");
+  margin-bottom: 30px;
+  height: 48px;
+  width: 48px;
 }
 
 .instagram {
-  background-color: #D4AE48;
-  height: 50px;
-  width: 50px;
+  background-image: url("../images/instagram.png");
+  margin-bottom: 30px;
+  height: 48px;
+  width: 48px;
 }
 
 
@@ -73,7 +79,7 @@ body {
 }
 
 .jumbotron h1 {
-  font-size: 48px;
+  font-size: 58px;
   font-weight: bold;
 }
 
@@ -83,11 +89,18 @@ body {
   padding: 14px 24px;
 }
 
+.location {
+  padding-bottom: 20px;
+}
 
 .menu {
   border-top: 1px solid #dbdbdb;
   border-bottom: 1px solid #dbdbdb;
   background-color: #efefef;
+  padding-bottom: 20px;
+ }
+
+ .schedule {
   padding-bottom: 20px;
  }
 

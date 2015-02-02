@@ -1,3 +1,5 @@
+"use strict"
+
 requirejs.config({
     paths: {
         bootstrap: '../bower_components/bootstrap/dist/js/bootstrap',
@@ -18,6 +20,23 @@ requirejs.config({
 
 requirejs(['jquery', 'bootstrap'],
 function   ($, bootstrap) {
+
+$(function () {
+    $('a[href^="#"]').on('click', function(event) {
+
+        var target = $( $(this).attr('href') );
+
+        console.log(target.length);
+
+        if( target.length ) {
+            event.preventDefault();
+            $('html, body').animate({
+                scrollTop: target.offset().top
+            }, 800);
+        }
+
+    });
+});
 
 
 });
