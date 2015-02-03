@@ -1,12 +1,12 @@
 'use strict';
 
-require(['require-config'], function() {
-    require(['jquery', 'admin/login.view', 'admin/login.model', 'bootstrap'], 
-    function ($, LoginView, LoginModel) {
+require(['jquery', 'underscore', 'admin/auth/auth.view', 'admin/auth/auth.model', 'bootstrap'], 
+function ($, _, AuthView, AuthModel) {
 
-        var loginModel = new LoginModel();
-        var loginView = new LoginView({el: '#admin-login', model: loginModel});
+	var views = [];
 
-        $(function () { loginView.render(); });
-    });
+	var authView = new AuthView({el: '#admin-auth', model: AuthModel.instance});
+	views.push(authView);
+
+    $(function () { _.invoke(views, 'render'); });
 });

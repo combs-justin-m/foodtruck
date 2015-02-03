@@ -153,7 +153,7 @@ module.exports = function (grunt) {
     jshint: {
       options: {
         jshintrc: '.jshintrc',
-        ignores: ['<%= config.client %>/**/*.template.js'],
+        ignores: ['<%= config.client %>/scripts/templates.js'],
         reporter: require('jshint-stylish')
       },
       all: [

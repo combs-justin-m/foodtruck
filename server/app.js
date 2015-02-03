@@ -1,18 +1,18 @@
 'use strict';
 
 var port = process.env.PORT;
-var config = require('../config');
 
 var express = require('express');
 var liveReload = require('connect-livereload')
-var serveStatic = require('serve-static');
+
+var staticRoutes = require('./routes/static.routes');
+var apiRoutes = require('./routes/api.routes');
 
 var app = express();
 
 app.use(liveReload());
-app.use(serveStatic('.tmp'));
-app.use('/bower_components', serveStatic('./bower_components')),
-app.use(serveStatic(config.client));
+app.use(staticRoutes);
+app.use(apiRoutes);
 
 var server = app.listen(port, function () {
   console.log('Express server listening on %d', port);

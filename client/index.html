@@ -173,7 +173,12 @@
     ga('create','UA-XXXXX-X');ga('send','pageview');
   </script>
 
-  <script data-main="scripts/main.js" src="bower_components/requirejs/require.js"></script>
+  <script src="bower_components/requirejs/require.js"></script>
+  <script> 
+    require(['scripts/require-config'], function () {
+      require(['main'], function () {});
+    }); 
+  </script>
         
 </body>
 </html>
