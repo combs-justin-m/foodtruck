@@ -15,10 +15,11 @@ function ($, _, Backbone) {
 				type: 'POST',
 				data: { password: password }
 			}).always(_.bind(function (data, textStatus) {
-				if (textStatus == 200 && data.token) {
+				if (textStatus === 200 && data.token) {
 					this.set({token: data.token});
 					this.trigger('auth:hello', data.token);
 				} else {
+					this.set({error: 'Invalid password.'});
 					this.trigger('auth:invalid');
 				}
 			}, this));
@@ -31,14 +32,12 @@ function ($, _, Backbone) {
 			}
 		},
 
-		token: function () { 
-			return this.get('token') 
-		},
+		token: function () { return this.get('token'); },
 
-		authed: function () { return this.token() ? true : false }
+		authed: function () { return this.token() ? true : false; }
 	});
 
 	AuthModel.instance = new AuthModel();
 
-	return AuthModel
+	return AuthModel;
 });

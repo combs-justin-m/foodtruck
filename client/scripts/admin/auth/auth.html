@@ -4,11 +4,14 @@
   </div>
   <div class="panel-body">
 
-    <div class="input-group">
-      <input type="password" class="form-control" name="password" placeholder="Password">
-      <span class="input-group-btn">
-        <button class="btn btn-default btn-login" type="button">Login</button>
-      </span>
+    <div class="form-group password-input {{#if error}}has-error{{/if}}">
+      <div class="input-group ">
+        <input type="password" class="form-control" name="password" placeholder="Password">
+        <span class="input-group-btn">
+          <button class="btn btn-default btn-login" type="button">Login</button>
+        </span>
+      </div>
+      <div class="help-block">{{error}}</div>
     </div>
 
     <br>

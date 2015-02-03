@@ -10,6 +10,10 @@ function (Backbone, templates) {
 			'click .btn-login': 'login'
 		},
 
+		initialize: function () {
+			this.listenTo(this.model, 'auth:invalid', this.render);
+		},
+
 		login: function (e) {
 			var value = $(e.target).val();
 			this.model.auth(value);

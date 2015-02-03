@@ -33,7 +33,7 @@ module.exports = function (grunt) {
       },
       jshint: {
         files: [
-          '<%= config.client %>/scripts/{,*/}*.js',
+          '<%= config.client %>/scripts/**/*.js',
           '<%= config.server %>/**/*.js'
         ],
         tasks: ['jshint'],
@@ -45,12 +45,12 @@ module.exports = function (grunt) {
       gruntfile: {
         files: ['Gruntfile.js']
       },
-      templates: {
+      handlebars: {
         files: ['<%= config.client %>/scripts/**/*.html'],
         tasks: ['handlebars']
       },
       styles: {
-        files: ['<%= config.client %>/styles/{,*/}*.css'],
+        files: ['<%= config.client %>/styles/**/*.css'],
         tasks: ['newer:copy:styles', 'autoprefixer']
       },
       express: {
@@ -65,10 +65,10 @@ module.exports = function (grunt) {
           livereload: true
         },
         files: [
-          '<%= config.client %>/scripts/{,*/}*.js',
-          '<%= config.client %>/{,*/}*.html',
-          '<%= config.client %>/images/{,*/}*',
-          '.tmp/styles/{,*/}*.css',
+          '<%= config.client %>/scripts/**/*.js',
+          '<%= config.client %>/*.html',
+          '<%= config.client %>/images/**/*',
+          '.tmp/styles/**/*.css',
         ]
       }
     },
@@ -158,9 +158,8 @@ module.exports = function (grunt) {
       },
       all: [
         'Gruntfile.js',
-        '<%= config.client %>/scripts/{,*/}*.js',
-        '!<%= config.client %>/scripts/vendor/*',
-        'test/spec/{,*/}*.js'
+        '<%= config.client %>/scripts/**/*.js',
+        'test/spec/**/*.js'
       ]
     },
 
