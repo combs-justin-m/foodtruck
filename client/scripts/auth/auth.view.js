@@ -1,10 +1,10 @@
 'use strict';
 
-define(['underscore', 'backbone', 'templates'], 
-function (_, Backbone, templates) {
+define(['backbone', 'templates'], 
+function (Backbone, templates) {
 
 	return Backbone.View.extend({
-		template: templates['client/scripts/components/auth/auth.html'],
+		template: templates['client/scripts/auth/auth.html'],
 
 		events: {
 			'change input': 'input',

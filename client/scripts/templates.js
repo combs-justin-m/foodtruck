@@ -2,7 +2,7 @@ define(['handlebars'], function(Handlebars) {
 
 this["JST"] = this["JST"] || {};
 
-this["JST"]["client/scripts/components/auth/auth.html"] = Handlebars.template({"1":function(depth0,helpers,partials,data) {
+this["JST"]["client/scripts/auth/auth.html"] = Handlebars.template({"1":function(depth0,helpers,partials,data) {
   return " panel-success ";
   },"3":function(depth0,helpers,partials,data) {
   var stack1, buffer = "\n            ";
@@ -10,9 +10,9 @@ this["JST"]["client/scripts/components/auth/auth.html"] = Handlebars.template({"
   if (stack1 != null) { buffer += stack1; }
   return buffer;
 },"4":function(depth0,helpers,partials,data) {
-  return " panel-danger  ";
+  return "   panel-danger  ";
   },"6":function(depth0,helpers,partials,data) {
-  return "\n                          panel-primary ";
+  return "\n                            panel-primary ";
   },"8":function(depth0,helpers,partials,data) {
   return " Success! ";
   },"10":function(depth0,helpers,partials,data) {
@@ -21,8 +21,11 @@ this["JST"]["client/scripts/components/auth/auth.html"] = Handlebars.template({"
   if (stack1 != null) { buffer += stack1; }
   return buffer;
 },"11":function(depth0,helpers,partials,data) {
-  return " error ";
-  },"13":function(depth0,helpers,partials,data) {
+  var helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
+  return " "
+    + escapeExpression(((helper = (helper = helpers.error || (depth0 != null ? depth0.error : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"error","hash":{},"data":data}) : helper)))
+    + " ";
+},"13":function(depth0,helpers,partials,data) {
   return " Admin Login ";
   },"15":function(depth0,helpers,partials,data) {
   return "has-error";
