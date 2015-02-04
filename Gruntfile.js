@@ -167,6 +167,17 @@ module.exports = function (grunt) {
         src: '{,*/}*.css'
       }
     },
+
+    shell: {
+      mongo: {
+        command: 'mongod',
+        options: {
+          async: true,
+          stderr: true,
+          failOnError: false
+        }
+      }
+    }
   });
 
   // Used for delaying livereload until after server has restarted
@@ -192,6 +203,7 @@ module.exports = function (grunt) {
       'handlebars',
       'copy:styles',
       'autoprefixer',
+      'shell:mongo',
       'express:livereload',
       'wait',
       'open',

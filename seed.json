@@ -1,0 +1,5 @@
+{
+	"undefined": "localhost/foodtruck",
+	"dev": "localhost/foodtruck",
+	"prod": "localhost/foodtruck"
+}
