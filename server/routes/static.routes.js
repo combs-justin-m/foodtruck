@@ -8,9 +8,9 @@ var config = require('../../config');
 
 var routes = new express.Router();
 
+routes.use(modRewrite(['^/([a-zA-Z]+)$ /$1.html']));
 routes.use(serveStatic('.tmp'));
 routes.use('/bower_components', serveStatic('./bower_components')),
 routes.use(serveStatic(config.client));
-routes.use(modRewrite(['^/(\w+)$ /$1.html']));
 
 exports = module.exports = routes;
