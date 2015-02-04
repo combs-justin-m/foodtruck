@@ -9,18 +9,23 @@ function ($, _, Backbone) {
 			_.bindAll(this, 'auth', 'deauth', 'token', 'authed');
 		},
 
-		auth: function (password) {
+		auth: function () {
+			this.deauth();
+
 			$.ajax({
 				url: '/api/login',
 				type: 'POST',
-				data: { password: password }
-			}).always(_.bind(function (data, textStatus) {
-				if (textStatus === 200 && data.token) {
+				data: this.toJSON()
+			}).always(_.bind(function (data, textStatus, jqXHR) {
+				if (jqXHR.status === 200 && data.token) {
+					this.clear();
 					this.set({token: data.token});
 					this.trigger('auth:hello', data.token);
 				} else {
-					this.set({error: 'Invalid password.'});
-					this.trigger('auth:invalid');
+					var error = data.error || 'Invalid username or password';
+					this.set({error: error});
+					this.unset('password');
+					this.trigger('auth:invalid', error);
 				}
 			}, this));
 		},

@@ -1,6 +1,6 @@
 'use strict';
 
-require(['jquery', 'underscore', 'admin/auth/auth.view', 'admin/auth/auth.model', 'bootstrap'], 
+require(['jquery', 'underscore', 'components/auth/auth.view', 'components/auth/auth.model', 'bootstrap'], 
 function ($, _, AuthView, AuthModel) {
 
 	var views = [];
