@@ -13,6 +13,7 @@ function (_, Backbone, templates) {
 
 		initialize: function () {
 			this.listenTo(this.model, 'auth:invalid', this.render);
+			this.listenTo(this.model, 'auth:hello', this.render);
 		},
 
 		login: function () {

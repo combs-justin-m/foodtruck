@@ -3,6 +3,7 @@
 var port = process.env.PORT;
 
 var express = require('express');
+var bodyParser = require('body-parser');
 var liveReload = require('connect-livereload')
 
 var staticRoutes = require('./routes/static.routes');
@@ -10,6 +11,7 @@ var apiRoutes = require('./routes/api.routes');
 
 var app = express();
 
+app.use(bodyParser.json());
 app.use(liveReload());
 app.use(staticRoutes);
 app.use(apiRoutes);

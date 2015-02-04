@@ -1,7 +1,8 @@
 [
 	{
 		"username": "admin",
-		"password": "pass",
+		"password": "QhcrSs5AdCmVgD7mNdoxdfD7QnmRYonr+E1ga+e3WQX1ZH+ySZfqZdAD0e2psPuOVmt+wcF3YuOE4taQYe4Vhg==",
+		"salt": "0000000000000000",
 		"name": "Administrator"
 	}
 ]

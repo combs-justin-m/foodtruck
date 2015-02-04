@@ -15,11 +15,12 @@ function ($, _, Backbone) {
 			$.ajax({
 				url: '/api/login',
 				type: 'POST',
-				data: this.toJSON()
+				contentType: 'application/json',
+				data: JSON.stringify(this)
 			}).always(_.bind(function (data, textStatus, jqXHR) {
 				if (jqXHR.status === 200 && data.token) {
 					this.clear();
-					this.set({token: data.token});
+					this.set({token: data.token, success: true});
 					this.trigger('auth:hello', data.token);
 				} else {
 					var error = data.error || 'Invalid username or password';
@@ -32,7 +33,7 @@ function ($, _, Backbone) {
 
 		deauth: function () {
 			if (this.has('token')) {
-				this.unset('token');
+				this.clear();
 				this.trigger('auth:goodbye');
 			}
 		},
