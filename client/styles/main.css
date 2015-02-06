@@ -1,24 +1,34 @@
 body {
-  background-color: #F7F7F7;
+  background: url("http://s3.amazonaws.com/codecademy-content/courses/ltp2/img/uber/black-thread.png") repeat;
+  background-attachment: fixed;
 }
 
+.nav-pills > li > a,
+        .nav-pills > li > a:hover,
+        .nav-pills > li > a:focus{
+            background-color: transparent;  
+        } 
+
 .header {
-  background-color: #f7f7f7;
-  height: 50px;
+  background: url("http://s3.amazonaws.com/codecademy-content/courses/ltp2/img/uber/black-thread.png") repeat;
+  height: 83px;
   width: 100%;
   position: fixed;
   margin-top: -5px;
   z-index: 1;
-  opacity: 0.95;
+  border-bottom: 1px solid #777; 
 }
 
 .header a {
+  color: #fff;
   display: inline-block;
 }
 
 .header .nav {
-  margin-top: 5px;
+  margin-top: 25px;
+  font-size: 22px;
 }
+
 
 .logo {
   background-image: url("../images/Logosmall.png");
@@ -31,28 +41,20 @@ body {
 
 .twitter {
   background-image: url("../images/twitter.png");
-  margin-bottom: 30px;
   height: 48px;
   width: 48px;
 }
 
 .facebook {
   background-image: url("../images/facebook.png");
-  margin-bottom: 30px;
   height: 48px;
   width: 48px;
 }
 
 .instagram {
   background-image: url("../images/instagram.png");
-  margin-bottom: 30px;
   height: 48px;
   width: 48px;
-}
-
-
-.header a { 
-  color: #393c3d;
 }
 
 .footer {
@@ -62,15 +64,21 @@ body {
   border-top: 1px solid #dbdbdb;
 }
 
+.footer a {
+  margin-top: -45px;
+  margin-bottom: 5px;
+  display: inline-block;
+  float: right;
+}
 
-/* Main marketing message and sign up button */
 .jumbotron {
-  height: 500px;
+  height: 820px;
   background-image: url("../images/truck_backgrnd.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   text-align: center;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid #777;
+  margin-bottom: 0px;
   color: #fff;
 }
 
@@ -79,34 +87,35 @@ body {
 }
 
 .jumbotron h1 {
+  padding-top: 50px;
   font-size: 58px;
   font-weight: bold;
 }
 
-
-.jumbotron .btn {
-  font-size: 21px;
-  padding: 14px 24px;
+h2 {
+  text-align: center;
 }
 
 .location {
-  padding-bottom: 20px;
+  background-color: #ffd42a;
 }
 
 .menu {
+  text-align: center;
   border-top: 1px solid #dbdbdb;
   border-bottom: 1px solid #dbdbdb;
-  background-color: #efefef;
-  padding-bottom: 20px;
+  color: #fff;
  }
 
- .schedule {
-  padding-bottom: 20px;
- }
 
 .catering {
   padding-bottom: 20px;
   border-top: 1px solid #dbdbdb;
-  border-bottom: 1px solid #dbdbdb;
-  background-color: #efefef;
+  border-bottom: 1px solid #777;
+  color: #fff;
+}
+
+.about {
+  background-color: #ffd42a;
+  text-align: center;
 }

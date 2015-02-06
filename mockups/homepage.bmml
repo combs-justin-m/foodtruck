@@ -1,0 +1,9 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1401" measuredH="1001" mockupW="1400" mockupH="1000">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="1" y="1" w="1400" h="1000" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>A%20Web%20Page%0Ahttp%3A//www.beefandbarley.com</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
