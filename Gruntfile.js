@@ -136,7 +136,10 @@ module.exports = function (grunt) {
     // Automatically add bower moduels to require.js config
     bowerRequirejs: {
       all: {
-        rjsConfig: 'client/scripts/require-config.js'
+        rjsConfig: 'client/scripts/require-config.js',
+        options: {
+          baseUrl: 'client'
+        }
       }
     },
 
