@@ -33,7 +33,7 @@ module.exports = function (grunt) {
       },
       jshint: {
         files: [
-          'client/app/**/*.js',
+          'client/scripts/**/*.js',
           'server/**/*.js'
         ],
         tasks: ['jshint'],
@@ -46,7 +46,7 @@ module.exports = function (grunt) {
         files: ['Gruntfile.js']
       },
       handlebars: {
-        files: ['client/app/**/*.html'],
+        files: ['client/scripts/**/*.html'],
         tasks: ['handlebars']
       },
       styles: {
@@ -65,7 +65,7 @@ module.exports = function (grunt) {
           livereload: true
         },
         files: [
-          'client/app/**/*.js',
+          'client/scripts/**/*.js',
           'client/*.html',
           'client/images/**/*',
           '.tmp/styles/**/*.css',
@@ -98,12 +98,12 @@ module.exports = function (grunt) {
     jshint: {
       options: {
         jshintrc: '.jshintrc',
-        ignores: ['client/app/templates.js'],
+        ignores: ['client/scripts/templates.js'],
         reporter: require('jshint-stylish')
       },
       all: [
         'Gruntfile.js',
-        'client/app/**/*.js',
+        'client/scripts/**/*.js',
         'test/spec/**/*.js'
       ]
     },
@@ -136,7 +136,7 @@ module.exports = function (grunt) {
     // Automatically add bower moduels to require.js config
     bowerRequirejs: {
       all: {
-        rjsConfig: 'client/app/require-config.js'
+        rjsConfig: 'client/scripts/require-config.js'
       }
     },
 
@@ -146,7 +146,7 @@ module.exports = function (grunt) {
       },
       admin: {
         files: {
-          'client/app/templates.js': 'client/app/**/*.html'
+          'client/scripts/templates.js': 'client/scripts/**/*.html'
         }
       }
     },
