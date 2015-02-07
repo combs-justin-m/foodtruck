@@ -1,5 +1,9 @@
 'use strict';
 
+var jwt = require('jsonwebtoken');
+var crypto = require('crypto');
+
+var config = requireRoot('config');
 var User = requireRoot('user/user.model');
 
 exports.authenticate = function (params, callback) {
@@ -16,7 +20,16 @@ exports.authenticate = function (params, callback) {
 		var user = users[0];
 
 		if (user.authenticate(params.password)) {
-			callback(null, { token: '1234' });
+			var token = jwt.sign(user.username, config.secret, {
+				expiresInMinutes: 30 * 24 * 60 // 30 days
+			});
+
+			var result = {
+				token: token,
+				principal: user.toJSON()
+			}
+
+			callback(null, result);
 		} else {
 			invalid();
 		}
