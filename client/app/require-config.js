@@ -1,5 +1,5 @@
 requirejs.config({
-    baseUrl: 'scripts',
+    baseUrl: 'app',
     paths: {
         bootstrap: '../bower_components/bootstrap/dist/js/bootstrap',
         jquery: '../bower_components/jquery/dist/jquery',
