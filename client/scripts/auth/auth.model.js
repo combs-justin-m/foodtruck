@@ -21,7 +21,7 @@ function ($, _, Backbone) {
 				model.trigger('auth:hello', token);
 			}
 
-			function fail(error) { 
+			function failure(error) { 
 				error = error || defaultError;
 				model.set({error: error});
 				model.unset('password');
@@ -38,11 +38,11 @@ function ($, _, Backbone) {
 				if (data.token) {
 					success(data.token);
 				} else {
-					fail(data.error || defaultError);
+					failure(data.error || defaultError);
 				}
 			})	
 			.fail(function () { 
-				fail(defaultError); 
+				failure(defaultError); 
 			});
 		},
 
