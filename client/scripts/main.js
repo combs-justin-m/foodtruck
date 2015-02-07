@@ -10,8 +10,11 @@ require(['jquery', 'bootstrap'], function () {
 
             if( target.length ) {
                 event.preventDefault();
+
+                var height = $('.header').height();
+
                 $('html, body').animate({
-                    scrollTop: target.offset().top
+                    scrollTop: target.offset().top - height
                 }, 800);
             }
 

@@ -11,26 +11,28 @@ body {
 
 .header {
   background: url("http://s3.amazonaws.com/codecademy-content/courses/ltp2/img/uber/black-thread.png") repeat;
-  height: 83px;
+  height: 64px;
   width: 100%;
   position: fixed;
-  margin-top: -5px;
-  z-index: 1;
-  border-bottom: 1px solid #777; 
+  z-index: 1; 
+}
+
+#name {
+  position: relative;
+  font-size: 32px;
+  top: -38px;
+  margin-left: 5px;
+  text-decoration: none;
 }
 
 .header a {
+  margin-top: 10px;
   color: #fff;
   display: inline-block;
+  font-size: 18px;
 }
 
-.header .nav {
-  margin-top: 25px;
-  font-size: 22px;
-}
-
-
-.logo {
+#logo {
   background-image: url("../images/Logosmall.png");
   z-index: 1;
   height: 75px;
@@ -60,8 +62,7 @@ body {
 .footer {
   text-align: center;
   padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #dbdbdb;
+  color: #fff;
 }
 
 .footer a {
@@ -72,7 +73,7 @@ body {
 }
 
 .jumbotron {
-  height: 820px;
+  height: 830px;
   background-image: url("../images/truck_backgrnd.jpg");
   background-repeat: no-repeat;
   background-size: cover;
@@ -96,26 +97,64 @@ h2 {
   text-align: center;
 }
 
-.location {
-  background-color: #ffd42a;
+.banner {
+  height: 600px;
+  width: 100%;
+  background-color: #fff;
 }
 
-.menu {
+#location {
+
+}
+
+#calendarbtn {
+  display: block;
+  margin: 0 auto;
   text-align: center;
-  border-top: 1px solid #dbdbdb;
-  border-bottom: 1px solid #dbdbdb;
-  color: #fff;
+  background-color: #ffd42a;
+  border-radius: 500px;
+  border: 3px solid black;
+}
+
+.btn:focus {
+  outline: 0 !important;
+}
+
+
+#parallax1 {
+  background-image: url("../images/parallax2.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  height: 600px;
+}
+
+#menu {
+  text-align: center;
  }
 
-
-.catering {
-  padding-bottom: 20px;
-  border-top: 1px solid #dbdbdb;
-  border-bottom: 1px solid #777;
-  color: #fff;
+#parallax2 {
+  background-image: url("../images/parallax3.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  height: 600px;
 }
 
-.about {
+#catering {
+  padding-bottom: 20px;
+  background-color: #fff;
+}
+
+#parallax3 {
+  background-image: url("../images/parallax1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  height: 600px;
+}
+
+#about {
   background-color: #ffd42a;
   text-align: center;
 }
