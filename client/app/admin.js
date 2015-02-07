@@ -1,12 +1,12 @@
 'use strict';
 
-require(['jquery', 'underscore', 'auth/auth.view', 'auth/auth.model', 'bootstrap'], 
-function ($, _, AuthView, AuthModel) {
+require(['jquery', 'underscore', 'login/login', 'bootstrap'], 
+function ($, _, Login) {
 
 	var views = [];
 
-	var authView = new AuthView({el: '#admin-auth', model: AuthModel.instance});
-	views.push(authView);
+	var loginView = Login.createView({el: '#login'});
+	views.push(loginView);
 
     $(function () { _.invoke(views, 'render'); });
 });

@@ -1,52 +1,63 @@
 'use strict';
 
-define(['jquery', 'underscore', 'backbone'], 
-function ($, _, Backbone) {
+define(['jquery', 'underscore', 'backbone', 'modernizr'], 
+function ($, _, Backbone, Modernizr) {
 
 	var AuthModel = Backbone.Model.extend({
 
 		initialize: function () {
-			_.bindAll(this, 'auth', 'deauth', 'token', 'authed');
+			// Sync with localStorage
+			if (Modernizr.localstorage) {
+				this.set(window.localStorage.getItem('auth'));
+			
+				this.on('change', function () {
+					if (this.attributes.length) {
+						window.localStorage.setItem('auth', this.attributes);
+					} else {
+						window.localStorage.removeItem('auth');
+					}
+				}, this);
+			}
+
+			_.bindAll(this, 'authenticate', 'deauthenticate', 'token', 'isAuthenticated');
 		},
 
-		auth: function () {
+		authenticate: function (credentials) {
 			var defaultError = 'Invalid username or password';
 			var model = this;
 
-			model.deauth();
+			model.deauthenticate();
 
-			function success(token) {
-				model.clear();
-				model.set({token: token, success: true});
-				model.trigger('auth:hello', token);
+			function success(data) {
+				model.deauthenticate(); // ensure model is clear before setting data
+				model.set(data);
+				model.trigger('auth:hello', data);
 			}
 
 			function failure(error) { 
 				error = error || defaultError;
-				model.set({error: error});
-				model.unset('password');
-				model.trigger('auth:invalid', error);
+				model.trigger('auth:denied', error);
 			}
 
 			$.ajax({
 				url: '/api/login',
 				type: 'POST',
 				contentType: 'application/json',
-				data: JSON.stringify(model)
+				data: JSON.stringify(credentials)
 			})
 			.done(function (data) {
 				if (data.token) {
-					success(data.token);
+					success(data);
 				} else {
-					failure(data.error || defaultError);
+					failure(data.error);
 				}
 			})	
 			.fail(function () { 
-				failure(defaultError); 
+				failure(); 
 			});
 		},
 
-		deauth: function () {
+		deauthenticate: function () {
 			if (this.has('token')) {
 				this.clear();
 				this.trigger('auth:goodbye');
@@ -55,10 +66,8 @@ function ($, _, Backbone) {
 
 		token: function () { return this.get('token'); },
 
-		authed: function () { return this.token() ? true : false; }
+		isAuthenticated: function () { return this.token() ? true : false; }
 	});
-
-	AuthModel.instance = new AuthModel();
 
 	return AuthModel;
 });

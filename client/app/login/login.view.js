@@ -1,10 +1,10 @@
 'use strict';
 
-define(['backbone', 'templates'], 
-function (Backbone, templates) {
+define(['backbone', 'html!login/login.html', 'css!login/login.css'], 
+function (Backbone, template) {
 
 	return Backbone.View.extend({
-		template: templates['client/scripts/auth/auth.html'],
+		template: template,
 
 		events: {
 			'change input': 'input',
@@ -12,12 +12,12 @@ function (Backbone, templates) {
 		},
 
 		initialize: function () {
-			this.listenTo(this.model, 'auth:invalid', this.render);
-			this.listenTo(this.model, 'auth:hello', this.render);
+			this.listenTo(this.model, 'change:success', this.render);
+			this.listenTo(this.model, 'change:error', this.render);
 		},
 
 		login: function () {
-			this.model.auth();
+			this.model.login();
 		},
 
 		input: function(e) {

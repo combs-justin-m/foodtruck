@@ -45,10 +45,6 @@ module.exports = function (grunt) {
       gruntfile: {
         files: ['Gruntfile.js']
       },
-      handlebars: {
-        files: ['client/app/**/*.html'],
-        tasks: ['handlebars']
-      },
       styles: {
         files: ['client/styles/**/*.css'],
         tasks: ['newer:copy:styles', 'autoprefixer']
@@ -153,17 +149,6 @@ module.exports = function (grunt) {
       }
     },
 
-    handlebars: {
-      options: {
-        amd: true
-      },
-      admin: {
-        files: {
-          'client/app/templates.js': 'client/app/**/*.html'
-        }
-      }
-    },
-
     // Copies remaining files to places other tasks can use
     copy: {
       styles: {
@@ -208,7 +193,6 @@ module.exports = function (grunt) {
       'clean:server',
       'bower:install',
       'bowerRequirejs',
-      'handlebars',
       'copy:styles',
       'autoprefixer',
       'shell:mongo',
