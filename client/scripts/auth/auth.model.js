@@ -10,25 +10,40 @@ function ($, _, Backbone) {
 		},
 
 		auth: function () {
-			this.deauth();
+			var defaultError = 'Invalid username or password';
+			var model = this;
+
+			model.deauth();
+
+			function success(token) {
+				model.clear();
+				model.set({token: token, success: true});
+				model.trigger('auth:hello', token);
+			}
+
+			function fail(error) { 
+				error = error || defaultError;
+				model.set({error: error});
+				model.unset('password');
+				model.trigger('auth:invalid', error);
+			}
 
 			$.ajax({
 				url: '/api/login',
 				type: 'POST',
 				contentType: 'application/json',
-				data: JSON.stringify(this)
-			}).always(_.bind(function (data, textStatus, jqXHR) {
-				if (jqXHR.status === 200 && data.token) {
-					this.clear();
-					this.set({token: data.token, success: true});
-					this.trigger('auth:hello', data.token);
+				data: JSON.stringify(model)
+			})
+			.done(function (data) {
+				if (data.token) {
+					success(data.token);
 				} else {
-					var error = data.error || 'Invalid username or password';
-					this.set({error: error});
-					this.unset('password');
-					this.trigger('auth:invalid', error);
+					fail(data.error || defaultError);
 				}
-			}, this));
+			})	
+			.fail(function () { 
+				fail(defaultError); 
+			});
 		},
 
 		deauth: function () {

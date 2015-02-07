@@ -1,43 +1,24 @@
 'use strict';
 
-var INVALID_MSG = 'Invalid username or password';
+var User = requireLocal('models/user.model');
 
-var crypto = require('crypto');
-var mongo = require('mongodb');
+exports.authenticate = function (params, callback) {
+	function invalid() {
+		callback(null, { error: 'Invalid username or password' });
+	}
 
-var config = require('../../config.js').mongo
+	if (!params.username || !params.password) return invalid();
 
-var MongoClient = mongo.MongoClient
+	User.find({ username: params.username }, function (err, users) {
+		if (err) return callback(err);
+		if (!users.length) return invalid();
 
-function connect(fn) {
-	MongoClient.connect(config.url, function(err, db) {
-		if (err) throw err;
-		fn(db);
-	});
-}
+		var user = users[0];
 
-function users(db) { 
-	return db.collection('users');
-}
-
-exports.auth = function (username, password, fn) {
-	connect(function (db) {
- 		users(db).find({username: username}).toArray(function (err, results) {
- 			try {
-	 			if (err) throw err;
-	 			if (!results.length) return fn({ error: INVALID_MSG });
-
-	 			var result = results[0];
-				var hash = crypto.pbkdf2Sync(password, result.salt, 1000, 64).toString('base64'); 	
-				
-				if (result.password == hash) {
-					fn({ token: '1234' })
-				} else {
-					fn({ error: INVALID_MSG });
-				}
-			} finally {
-				db.close();			
-			}
- 		});
+		if (user.authenticate(params.password)) {
+			callback(null, { token: '1234' });
+		} else {
+			invalid();
+		}
 	});
 }

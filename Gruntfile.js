@@ -17,7 +17,7 @@ module.exports = function (grunt) {
   require('load-grunt-tasks')(grunt);
 
   // Configurable paths
-  var config = require('./config');
+  var config = require('./server/config');
 
   // Define the configuration for all the tasks
   grunt.initConfig({
@@ -33,8 +33,8 @@ module.exports = function (grunt) {
       },
       jshint: {
         files: [
-          '<%= config.client %>/scripts/**/*.js',
-          '<%= config.server %>/**/*.js'
+          'client/scripts/**/*.js',
+          'server/**/*.js'
         ],
         tasks: ['jshint'],
       },
@@ -46,15 +46,15 @@ module.exports = function (grunt) {
         files: ['Gruntfile.js']
       },
       handlebars: {
-        files: ['<%= config.client %>/scripts/**/*.html'],
+        files: ['client/scripts/**/*.html'],
         tasks: ['handlebars']
       },
       styles: {
-        files: ['<%= config.client %>/styles/**/*.css'],
+        files: ['client/styles/**/*.css'],
         tasks: ['newer:copy:styles', 'autoprefixer']
       },
       express: {
-        files: ['<%= config.server %>/**/*.js'],
+        files: ['server/**/*.js'],
         tasks: ['express:livereload', 'wait'],
         options: {
           spawn: false
@@ -65,9 +65,9 @@ module.exports = function (grunt) {
           livereload: true
         },
         files: [
-          '<%= config.client %>/scripts/**/*.js',
-          '<%= config.client %>/*.html',
-          '<%= config.client %>/images/**/*',
+          'client/scripts/**/*.js',
+          'client/*.html',
+          'client/images/**/*',
           '.tmp/styles/**/*.css',
         ]
       }
@@ -75,12 +75,9 @@ module.exports = function (grunt) {
 
     // Express server
     express: {
-      options: {
-        port: config.port
-      },
       livereload: {
         options: {
-          script: '<%= config.server %>/app.js'
+          script: 'server/app.js'
         }
       }
     },
@@ -101,12 +98,12 @@ module.exports = function (grunt) {
     jshint: {
       options: {
         jshintrc: '.jshintrc',
-        ignores: ['<%= config.client %>/scripts/templates.js'],
+        ignores: ['client/scripts/templates.js'],
         reporter: require('jshint-stylish')
       },
       all: [
         'Gruntfile.js',
-        '<%= config.client %>/scripts/**/*.js',
+        'client/scripts/**/*.js',
         'test/spec/**/*.js'
       ]
     },
@@ -139,9 +136,9 @@ module.exports = function (grunt) {
     // Automatically add bower moduels to require.js config
     bowerRequirejs: {
       all: {
-        rjsConfig: '<%= config.client %>/scripts/require-config.js',
+        rjsConfig: 'client/scripts/require-config.js',
         options: {
-          baseUrl: '<$= config.client %>'
+          baseUrl: 'client'
         }
       }
     },
@@ -152,7 +149,7 @@ module.exports = function (grunt) {
       },
       admin: {
         files: {
-          '<%= config.client %>/scripts/templates.js': '<%= config.client %>/scripts/**/*.html'
+          'client/scripts/templates.js': 'client/scripts/**/*.html'
         }
       }
     },
@@ -162,7 +159,7 @@ module.exports = function (grunt) {
       styles: {
         expand: true,
         dot: true,
-        cwd: '<%= config.client %>/styles',
+        cwd: 'client/styles',
         dest: '.tmp/styles/',
         src: '{,*/}*.css'
       }
