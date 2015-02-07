@@ -2,7 +2,7 @@
 
 var express = require('express');
 
-var AuthService = requireLocal('services/auth.service');
+var AuthService = requireRoot('auth/auth.service');
 
 var AuthController = express.Router();
 

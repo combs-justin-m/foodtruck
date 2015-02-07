@@ -1,6 +1,9 @@
 'use strict';
 
-global.requireLocal = function (name) {
+/**
+ * Require modules from the root directory.
+ */
+global.requireRoot = function (name) {
 	return require(__dirname + '/' + name);
 }
 
@@ -9,10 +12,9 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var liveReload = require('connect-livereload')
 
-var config = requireLocal('config');
-
-var staticController = requireLocal('controllers/static.controller');
-var authController = requireLocal('controllers/auth.controller');
+var config = requireRoot('config');
+var commonRoutes = requireRoot('common/common.controller');
+var authController = requireRoot('auth/auth.controller');
 
 mongoose.connect(config.mongo.uri, config.mongo.options);
 
@@ -20,7 +22,7 @@ var app = express();
 
 app.use(bodyParser.json());
 app.use(liveReload());
-app.use(staticController);
+app.use(commonRoutes);
 app.use(authController);
 
 var server = app.listen(config.port, function () {

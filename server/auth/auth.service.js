@@ -1,6 +1,6 @@
 'use strict';
 
-var User = requireLocal('models/user.model');
+var User = requireRoot('user/user.model');
 
 exports.authenticate = function (params, callback) {
 	function invalid() {
