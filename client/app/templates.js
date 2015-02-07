@@ -2,7 +2,7 @@ define(['handlebars'], function(Handlebars) {
 
 this["JST"] = this["JST"] || {};
 
-this["JST"]["client/scripts/auth/auth.html"] = Handlebars.template({"1":function(depth0,helpers,partials,data) {
+this["JST"]["client/app/auth/auth.html"] = Handlebars.template({"1":function(depth0,helpers,partials,data) {
   return " panel-success ";
   },"3":function(depth0,helpers,partials,data) {
   var stack1, buffer = "\n            ";

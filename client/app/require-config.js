@@ -1,13 +1,12 @@
 requirejs.config({
-    baseUrl: 'scripts',
+    baseUrl: 'app',
     paths: {
+        backbone: '../bower_components/backbone/backbone',
         bootstrap: '../bower_components/bootstrap/dist/js/bootstrap',
+        handlebars: '../bower_components/handlebars/handlebars',
         jquery: '../bower_components/jquery/dist/jquery',
         requirejs: '../bower_components/requirejs/require',
-        backbone: '../bower_components/backbone/backbone',
-        underscore: '../bower_components/underscore/underscore',
-        handlebars: '../bower_components/handlebars/handlebars',
-        modernizr: '../bower_components/modernizr/modernizr'
+        underscore: '../bower_components/underscore/underscore'
     },
     packages: [
 
