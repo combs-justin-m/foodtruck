@@ -1,13 +1,13 @@
-
 'use strict';
 
 define([
     'jquery',
     'underscore',
     'backbone',
+    'header/header',
     'menu/menu',
     'login/login'],
-function($, _, Backbone, Menu, Login) {
+function($, _, Backbone, Header, Menu, Login) {
 
     var App = Backbone.Router.extend({
 
@@ -18,6 +18,7 @@ function($, _, Backbone, Menu, Login) {
 
         initialize: function() {
             this.views = [
+                Header.createView({ el: '#header', app: this }),
                 Menu.createView({ el: '#menu-container', app: this })
             ];
         },

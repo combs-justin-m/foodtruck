@@ -18,7 +18,7 @@ body {
   z-index: 1; 
 }
 
-#name {
+.header .header-name {
   position: relative;
   font-size: 32px;
   top: -22px;
@@ -33,7 +33,12 @@ body {
   font-size: 18px;
 }
 
-#logo {
+.header .header-logout {
+  margin: 23px 12px;
+  font-size: 12px;
+}
+
+.header .header-logo {
   background-image: url("../images/Logosmall.png");
   z-index: 1;
   height: 64px;

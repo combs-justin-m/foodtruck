@@ -8,15 +8,20 @@ function ($, _, Backbone, Modernizr) {
 		initialize: function () {
 			// Sync with localStorage
 			if (Modernizr.localstorage) {
-				this.set(window.localStorage.getItem('auth'));
+				try {
+					var data = window.localStorage.getItem('auth');
+					this.set(data && JSON.parse(data));
+				} catch (e) {
+					console.error(e);
+				}
 			
-				this.on('change', function () {
-					if (this.attributes.length) {
-						window.localStorage.setItem('auth', this.attributes);
-					} else {
+				this.listenTo(this, 'change', function () {
+					if (_.isEmpty(this.attributes)) {
 						window.localStorage.removeItem('auth');
+					} else {
+						window.localStorage.setItem('auth', JSON.stringify(this));
 					}
-				}, this);
+				});
 			}
 		},
 
@@ -27,7 +32,7 @@ function ($, _, Backbone, Modernizr) {
 			model.deauthenticate();
 
 			function success(data) {
-				model.deauthenticate(); // ensure model is clear before setting data
+				model.deauthenticate(); // ensure model is clear before setting data;
 				model.set(data);
 				model.trigger('auth:hello', data);
 			}
@@ -56,8 +61,9 @@ function ($, _, Backbone, Modernizr) {
 		},
 
 		deauthenticate: function () {
-			if (this.has('token')) {
-				this.clear();
+			var wasAuthenticated = this.isAuthenticated();
+			this.clear();
+			if(wasAuthenticated) {
 				this.trigger('auth:goodbye');
 			}
 		},

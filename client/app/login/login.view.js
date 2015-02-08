@@ -15,8 +15,7 @@ function (_, Backbone, modalTemplate, contentTemplate) {
 
 		events: {
 			'change input': 'input',
-			'submit form': 'login',
-			'click button.close': 'hide'
+			'submit form': 'login'
 		},
 
 		initialize: function (options) {
@@ -74,6 +73,12 @@ function (_, Backbone, modalTemplate, contentTemplate) {
 		renderContent: function (data) {
 			var html = this.contentTemplate(data);
 			this.$('#login-modal-content').html(html);
+
+			var $loginUsername = this.$('#login-username');
+			this.$modal.on('shown.bs.modal', function () {
+				$loginUsername.focus();
+			});
+			
 			return this;
 		},
 
