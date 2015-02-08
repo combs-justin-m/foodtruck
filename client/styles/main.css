@@ -90,12 +90,8 @@ body {
 
 .jumbotron h1 {
   padding-top: 50px;
-  font-size: 58px;
+  font-size: 60px;
   font-weight: bold;
-}
-
-h2 {
-  text-align: center;
 }
 
 .banner {
@@ -104,22 +100,64 @@ h2 {
   background-color: #fff;
 }
 
+
+h1 {
+  font-size: 52px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 46px;
+  margin-bottom: 40px;
+}
+
+h3 {
+  font-size: 32px;
+}
+
+p {
+  font-size: 18px;
+}
+
 #location {
   position: relative;
   text-align: center;
+}
 
+#location h2 {
+  margin-top: 200px;
+}
+
+.overlay {
+  z-index: 1;
+   background: transparent; 
+   position:relative; 
+   width:600px;
+   height:400px; /* your iframe height */
+   top:500px;  /* your iframe height */
+   margin-top:-400px;  /* your iframe height */
+}
+
+#map {
+  margin-top: 100px;
 }
 
 #calendarbtn {
 
   position: absolute;
-  bottom: 20px;
+  bottom: -40px;
   margin-left: -75px;
   text-align: center;
   background-color: #ffd42a;
-  border-radius: 500px;
-  border: 3px solid black;
-  width: 150px;
+  border-radius: 100%;
+  border: 5px solid black;
+  width: 80px;
+  height: 80px;
+}
+
+#calendarbtn span {
+  position: relative;
+  top: 4px;
 }
 
 #calendar {
@@ -148,6 +186,36 @@ h2 {
   text-align: center;
  }
 
+ .carousel {
+  height: 600px;
+  width: 100%;
+ }
+
+.carousel-control.right {
+    margin-right: -65px;
+    background-image: none;
+    color: black;
+}
+
+
+.carousel-control.left {
+    margin-left: -65px;
+    background-image: none;
+    color: black;
+}
+
+.carousel-caption {
+  position: relative;
+  top: -300px;
+  font-size: 32px;
+  color: black;
+  text-shadow: none;
+}
+
+.carousel-inner>.item {
+  margin-top: 150px;
+}
+
 #parallax2 {
   background-image: url("../images/parallax3.jpg");
   background-repeat: no-repeat;
@@ -158,7 +226,6 @@ h2 {
 
 #catering {
   padding-bottom: 20px;
-  background-color: #fff;
 }
 
 #parallax3 {
