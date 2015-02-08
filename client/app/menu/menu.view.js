@@ -13,7 +13,6 @@ function (Backbone, template) {
 		},
 		
 		render: function () {
-			console.log(this.collection.toJSON());
 			var data = this.collection.toJSON();
 			var html = this.template(data);
 
