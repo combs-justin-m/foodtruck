@@ -19,6 +19,19 @@ require(['jquery', 'bootstrap'], function () {
             }
 
         });
+            
+
+
+            $('#calendarbtn').click(function() {
+                $('#calendar').slideToggle(600); {
+                        
+                $('html, body').animate({
+                scrollTop: $('#calendar').offset().top - 400 }, 600);
+                }
+            });
+
+
+
     });
 });
 

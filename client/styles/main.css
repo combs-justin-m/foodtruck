@@ -1,6 +1,7 @@
 body {
   background: url("http://s3.amazonaws.com/codecademy-content/courses/ltp2/img/uber/black-thread.png") repeat;
   background-attachment: fixed;
+  font-family: 'Ubuntu', sans-serif;
 }
 
 .nav-pills > li > a,
@@ -20,7 +21,7 @@ body {
 #name {
   position: relative;
   font-size: 32px;
-  top: -38px;
+  top: -22px;
   margin-left: 5px;
   text-decoration: none;
 }
@@ -35,9 +36,9 @@ body {
 #logo {
   background-image: url("../images/Logosmall.png");
   z-index: 1;
-  height: 75px;
-  width: 75px;
-  margin-top: 6px;
+  height: 64px;
+  width: 64px;
+  margin-top: 0px;
   
 }
 
@@ -104,16 +105,30 @@ h2 {
 }
 
 #location {
+  position: relative;
+  text-align: center;
 
 }
 
 #calendarbtn {
-  display: block;
-  margin: 0 auto;
+
+  position: absolute;
+  bottom: 20px;
+  margin-left: -75px;
   text-align: center;
   background-color: #ffd42a;
   border-radius: 500px;
   border: 3px solid black;
+  width: 150px;
+}
+
+#calendar {
+  display: none;
+  text-align: center;
+  margin: 0 auto;
+  height: 400px;
+  width: 400px;
+  background-color: transparent;
 }
 
 .btn:focus {
