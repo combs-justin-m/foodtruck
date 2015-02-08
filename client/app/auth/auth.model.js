@@ -40,7 +40,7 @@ function ($, _, Backbone, Modernizr) {
 			}
 
 			$.ajax({
-				url: '/api/login',
+				url: '/api/auth/login',
 				type: 'POST',
 				contentType: 'application/json',
 				data: JSON.stringify(credentials)

@@ -1,12 +1,11 @@
 'use strict';
 
 var express = require('express');
-
-var AuthService = requireRoot('auth/auth.service');
+var AuthService = require('./auth.service');
 
 var AuthController = express.Router();
 
-AuthController.post('/api/login', function (req, res) {	
+AuthController.post('/api/auth/login', function (req, res) {	
 	if(!req.body.username || !req.body.password) {
 		return res.status(400).end();
 	}

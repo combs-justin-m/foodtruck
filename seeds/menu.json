@@ -1,0 +1,51 @@
+[
+	{
+		"name": "Collossal Cheeseburger",
+		"category": "Burgers",
+		"price": 4.50,
+		"description": "Exactly what it sounds like. I mean look at it.",
+		"image": "images/menu/collossal_cheeseburger.jpg"
+	},
+	{
+		"name": "Pepper Bacon Cheeseburger",
+		"category": "Burgers",
+		"price": 3.25,
+		"description": "Zesty burger, nothing to do with my dog.",
+		"image": "images/menu/pepper_bacon_cheeseburger.jpg"
+	},
+	{
+		"name": "Jr. Burger",
+		"category": "Burgers",
+		"price": 2.00,
+		"description": "Tasty burger, great for kids!",
+		"image": "images/menu/jr_burger.jpg"
+	},
+	{
+		"name": "Steak Fries",
+		"category": "Sides",
+		"price": 2.00,
+		"description": "Baked to perfection, delicous fries.",
+		"image": "images/menu/steak_fries.jpg"
+	},
+	{
+		"name": "Kettle Chips",
+		"category": "Sides",
+		"price": 1.50,
+		"description": "Old fashioned chips, perfect side for any burger.",
+		"image": "images/menu/kettle_chips.png"
+	},
+	{
+		"name": "Soda",
+		"category": "Drinks",
+		"price": 2.50,
+		"description": "Some tasty beverage to wash it down.",
+		"image": "images/menu/soda.jpg"
+	},
+	{
+		"name": "Sweet Tea",
+		"category": "Drinks",
+		"price": 3.25,
+		"description": "Crips refershing, traditional sweet tea.",
+		"image": "images/menu/sweet_tea.jpg"
+	}
+]
