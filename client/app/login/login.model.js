@@ -18,8 +18,6 @@ function (_, Backbone, Auth) {
 				this.set({ error: error || 'Invalid username or password.' });
 				this.trigger('login:denied', this, error);
 			});
-
-			_.bindAll(this, 'login');
 		},
 
 		login: function () {

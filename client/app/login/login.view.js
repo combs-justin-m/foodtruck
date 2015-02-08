@@ -16,14 +16,13 @@ function (_, Backbone, modalTemplate, contentTemplate) {
 		events: {
 			'change input': 'input',
 			'submit form': 'login',
-			'click button.close': 'remove'
+			'click button.close': 'hide'
 		},
 
-		initialize: function () {
-			this.listenTo(this.model, 'login:hello', this.remove);
+		initialize: function (options) {
+			this.app = options.app;
+			this.listenTo(this.model, 'login:hello', this.hide);
 			this.listenTo(this.model, 'login:denied', this.render);
-
-			_.bindAll(this, 'input', 'login', 'render', 'renderModal', 'renderContent', 'remove');
 		},
 
 		input: function(e) {
@@ -38,6 +37,12 @@ function (_, Backbone, modalTemplate, contentTemplate) {
 			this.model.login();
 		},
 
+		hide: function () {
+			if (this.$modal) {
+				this.$modal.modal('hide');
+			}
+		},
+
 		render: function () {
 			var data = this.model.toJSON();
 			
@@ -48,14 +53,20 @@ function (_, Backbone, modalTemplate, contentTemplate) {
 		},
 
 		renderModal: function (data) {
+			// to prevent the modal from animating for every render, only draw it once
 			if (!this.$modal) {
 				var html = this.modalTemplate(data);
 				this.$el.html(html);
+
+				// initialize the modal
 				this.$modal = this.$('#login-modal');
 				this.$modal.modal();
+
+				// clean up after the modal is hidden
+				this.$modal.on('hidden.bs.modal', _.bind(this.remove, this));
 			}
 
-			this.$modal.show('show');
+			this.$modal.modal('show');
 
 			return this;
 		},
@@ -67,15 +78,8 @@ function (_, Backbone, modalTemplate, contentTemplate) {
 		},
 
 		remove: function () {
-			var self = this;
-			if (this.$modal) {
-				this.$modal.modal('hide');
-				this.$modal.on('hidden.bs.modal', function () {
-					Backbone.View.prototype.remove.apply(self, arguments);
-				});
-			} else {
-				Backbone.View.prototype.remove.apply(self, arguments);
-			}
+			this.app.navigate('/');
+			Backbone.View.prototype.remove.call(this);
 		}
 	});
 });

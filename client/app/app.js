@@ -6,37 +6,52 @@ define([
     'underscore',
     'backbone',
     'menu/menu',
-    'login/login',
-    'auth/auth'],
-function($, _, Backbone, Menu, Login, Auth) {
+    'login/login'],
+function($, _, Backbone, Menu, Login) {
 
     var App = Backbone.Router.extend({
 
     	routes: {
             '(/)': 'index',
-            'login(/)': 'login'
+            'admin(/)': 'admin'
         },
 
         initialize: function() {
-            this.views = [];
-            this.views.push(Menu.createView({
-                el: '#menu-container'
-            }));
-
-            this.listenTo(Auth, 'auth:hello', function () {
-                this.navigate(null);
-            });
+            this.views = [
+                Menu.createView({ el: '#menu-container', app: this })
+            ];
         },
 
         index: function() {
-            _.invoke(this.views, 'render');
+           this.render();
         },
 
-        login: function() {
-            this.index();
-            $('body').append(Login.createView().render().el);
+        admin: function() {
+            this.render();
+
+            var view = Login.createView({ app: this });
+            this.append(view.render());
+        },
+
+        render: function () {
+             _.invoke(this.views, 'render');
+             return this;
+        },
+
+        append: function (view) {
+            $('body').append(view.el);
         }
     });
 
-    return new App();
+    return  {
+        start: function () {
+            if (this.app) {
+                return false;
+            }
+
+            this.app = new App();
+            Backbone.history.start();
+            return true;
+        }
+    };
 });

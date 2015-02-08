@@ -2,12 +2,11 @@
 
 require([
     'jquery', 
-    'backbone', 
     'app',
     'bootstrap'], 
-function ($, Backbone) {
+function ($, App) {
     $(function () {
-        Backbone.history.start();
+        App.start();
 
         // Menu animated scroll
         $('a[href^="#"]').on('click', function(event) {

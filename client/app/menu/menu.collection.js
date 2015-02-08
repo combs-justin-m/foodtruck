@@ -7,10 +7,6 @@ function (_, Backbone, MenuModel) {
 		url: '/api/menu',
 		model: MenuModel,
 
-		initialize: function () {
-			_.bindAll(this, 'toJSON');
-		},
-
 		// Group the data by category and sort by category size.
 		toJSON: function () {
 			var items = Backbone.Collection.prototype.toJSON.call(this);

@@ -18,8 +18,6 @@ function ($, _, Backbone, Modernizr) {
 					}
 				}, this);
 			}
-
-			_.bindAll(this, 'authenticate', 'deauthenticate', 'token', 'isAuthenticated');
 		},
 
 		authenticate: function (credentials) {
