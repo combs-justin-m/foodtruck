@@ -1,24 +1,18 @@
 'use strict';
 
-require(['jquery', 'underscore', 'menu/menu', 'bootstrap'], 
-function ($, _, Menu) {
-
-    var views = [];
-
-    var menuView = Menu.createView({el: '#menu-container'});
-    views.push(menuView);
-
+require([
+    'jquery', 
+    'backbone', 
+    'app',
+    'bootstrap'], 
+function ($, Backbone) {
     $(function () {
-
-        // Render Backbone views
-        _.invoke(views, 'render');
+        Backbone.history.start();
 
         // Menu animated scroll
         $('a[href^="#"]').on('click', function(event) {
 
             var target = $( $(this).attr('href') );
-
-            console.log(target.length);
 
             if( target.length ) {
                 event.preventDefault();

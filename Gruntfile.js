@@ -62,7 +62,8 @@ module.exports = function (grunt) {
         },
         files: [
           'client/app/**/*.js',
-          'client/*.html',
+          'client/**/*.html',
+          'client/**/*.css',
           'client/images/**/*',
           '.tmp/styles/**/*.css',
         ]

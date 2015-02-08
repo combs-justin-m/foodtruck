@@ -9,12 +9,14 @@ function (_, Backbone, Auth) {
 			this.listenTo(Auth, 'auth:hello', function () {
 				this.clear();
 				this.set({ success: true });
+				this.trigger('login:hello');
 			});
 
 			this.listenTo(Auth, 'auth:denied', function (error) {
 				this.unset('password');
 				this.unset('success');
-				this.set({ error: error || 'Invalid username or password.'});
+				this.set({ error: error || 'Invalid username or password.' });
+				this.trigger('login:denied', this, error);
 			});
 
 			_.bindAll(this, 'login');

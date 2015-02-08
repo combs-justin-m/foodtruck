@@ -1,0 +1,35 @@
+.login-modal .modal-content {
+	margin-top: 100px;
+	border-radius: 25px;
+	border-color: #333;
+}
+
+.login-modal .modal-header {
+	padding: 10px;
+	border-color: #333;
+}
+
+.login-modal .has-error {
+	color: #a94442;
+}
+
+.login-modal .modal-title {
+	font-size: 20px;
+}
+
+.login-modal .btn {
+	color: #333;
+	background-color: #ffd42a;
+	border-radius: 25px;
+	border-width: 3px;
+	border-color: #333;
+}
+
+.login-modal .btn:focus , .login-modal .close:focus{
+	outline: 0;
+}
+
+.login-forgot-password {
+	text-align: center;
+	margin-top: 10px;
+}

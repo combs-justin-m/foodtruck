@@ -3,6 +3,7 @@ requirejs.config({
     paths: {
         backbone: '../bower_components/backbone/backbone',
         bootstrap: '../bower_components/bootstrap/dist/js/bootstrap',
+        handlebars: '../bower_components/handlebars/handlebars',
         jquery: '../bower_components/jquery/dist/jquery',
         modernizr: '../bower_components/modernizr/modernizr',
         css: '../bower_components/require-css/css',
@@ -11,8 +12,7 @@ requirejs.config({
         requirejs: '../bower_components/requirejs/require',
         'requirejs-handlebars': '../bower_components/requirejs-handlebars/hb',
         'requirejs-text': '../bower_components/requirejs-text/text',
-        underscore: '../bower_components/underscore/underscore',
-        handlebars: '../bower_components/handlebars/handlebars'
+        underscore: '../bower_components/underscore/underscore'
     },
     packages: [
 
