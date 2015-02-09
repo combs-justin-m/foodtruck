@@ -8,7 +8,6 @@ function (_, Backbone, Auth) {
 		initialize: function () {
 			this.listenTo(Auth, 'auth:hello', function () {
 				this.clear();
-				this.set({ success: true });
 				this.trigger('login:hello');
 			});
 
