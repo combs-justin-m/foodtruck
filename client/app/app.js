@@ -28,9 +28,8 @@ function($, _, Backbone, slide, Header, Menu, Login, Admin) {
         },
 
         index: function() {
-            this.removeAppendices();
             this.render();
-            slide({ to: 0 });
+            slide(0, _.bind(this.removeAppendices, this));
         },
 
         login: function() {
@@ -43,7 +42,7 @@ function($, _, Backbone, slide, Header, Menu, Login, Admin) {
             var adminView = Admin.createView({ app: this });
             this.append(adminView);
             this.render();
-            slide({ to: adminView.$el.width() });
+            slide(adminView.$el.width());
         },
 
         render: function () {
