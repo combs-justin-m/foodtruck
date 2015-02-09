@@ -27,11 +27,27 @@ function ($, App) {
 
         // Callendar scroll animation
         $('#calendarbtn').click(function() {
-            $('#calendar').slideToggle(600); {
-                    
-            $('html, body').animate({
-            scrollTop: $('#calendar').offset().top - 400 }, 600);
+            var $window = $(window);
+            var $calendar = $('#calendar');
+
+            var open = $calendar.is('.in');
+
+            $calendar.collapse('toggle'); 
+
+            if (!open) {
+                var windowBottom = $window.scrollTop() + $window.height();
+                var calendarHeight = $calendar[0].scrollHeight;
+                var calendarBottom = $calendar.offset().top + calendarHeight;
+
+                var scrollAmount = calendarBottom - windowBottom;
+
+                if (scrollAmount > 0) {
+                    $('html, body').animate({
+                        scrollTop: $window.scrollTop() + scrollAmount
+                    }, 350);
+                }
             }
+            
         });
     });
 

@@ -95,7 +95,7 @@ body {
 }
 
 .banner {
-  height: 600px;
+  min-height: 600px;
   width: 100%;
   background-color: #fff;
 }
@@ -145,7 +145,6 @@ p {
 #calendarbtn {
 
   position: absolute;
-  bottom: -40px;
   margin-left: -75px;
   text-align: center;
   background-color: #ffd42a;
@@ -161,12 +160,9 @@ p {
 }
 
 #calendar {
-  display: none;
-  text-align: center;
-  margin: 0 auto;
-  height: 400px;
-  width: 400px;
+  text-transform: uppercase;
   background-color: transparent;
+  color: #fff;
 }
 
 .btn:focus {
@@ -226,6 +222,12 @@ p {
 
 #catering {
   padding-bottom: 20px;
+}
+
+#contact-us {
+  padding-top: 40px;
+  margin: 0 auto;
+  width: 600px;
 }
 
 #parallax3 {
