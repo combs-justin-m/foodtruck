@@ -4,7 +4,7 @@ define(['jquery', 'underscore', 'velocity'],
 function($, _) {
 
     // higher is a faster slide
-    var speed = 2;
+    var speed = 2.5;
 
     var $window = $(window);
     var $body = $('body');
@@ -15,17 +15,9 @@ function($, _) {
      * The 'to' paraemter specifies how far in pixels to slide. Defaults to window width.
      * the 'callback' parameter is invoked once the slide finishes.
      */
-    function slide(options) {
-        var slideTo, callback;
-
-        if (_.isNumber(options)) {
-            slideTo = options;
-            callback = _.noop;
-        } else {
-            options = options || {};
-            slideTo = 'to' in options ? options.to : $window.width() + 1;
-            callback = options.callback || _.noop;
-        }
+    function slide(slideTo, callback) {
+        slideTo = _.isNumber(slideTo) ? slideTo : $window.width() + 1;
+        callback = callback || _.noop;
 
         var startingPosition = $body.position().left;
 
