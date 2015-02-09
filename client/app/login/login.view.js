@@ -1,17 +1,16 @@
 'use strict';
 
 define([
+	'jquery',
 	'underscore',
 	'backbone', 
-	'html!login/login.modal.html', 
-	'html!login/login.content.html',
+	'html!login/login.html', 
 	'css!login/login', 
 	'bootstrap' ], 
-function (_, Backbone, modalTemplate, contentTemplate) {
+function ($, _, Backbone, template) {
 
 	return Backbone.View.extend({
-		modalTemplate: modalTemplate,
-		contentTemplate: contentTemplate,
+		template: template,
 
 		events: {
 			'change input': 'input',
@@ -20,7 +19,10 @@ function (_, Backbone, modalTemplate, contentTemplate) {
 
 		initialize: function (options) {
 			this.app = options.app;
-			this.listenTo(this.model, 'login:hello', this.hide);
+
+			this.$body = $('body');
+			
+			this.listenTo(this.model, 'login:hello', this.remove);
 			this.listenTo(this.model, 'login:denied', this.render);
 		},
 
@@ -36,55 +38,59 @@ function (_, Backbone, modalTemplate, contentTemplate) {
 			this.model.login();
 		},
 
-		hide: function () {
-			if (this.$modal) {
-				this.$modal.modal('hide');
-			}
-		},
-
 		render: function () {
 			var data = this.model.toJSON();
-			
-			this.renderModal(data);
-			this.renderContent(data);
+			var html = this.template(data);
 
-			return this;
-		},
+			this.$el.html(html);
 
-		renderModal: function (data) {
-			// to prevent the modal from animating for every render, only draw it once
-			if (!this.$modal) {
-				var html = this.modalTemplate(data);
-				this.$el.html(html);
+			this.$body.css('overflow', 'hidden');
 
-				// initialize the modal
-				this.$modal = this.$('#login-modal');
-				this.$modal.modal();
+			var slide = function () {
+				this.$body.css({ 
+					left: $(window).width()+1
+				});
+			};
+			slide = _.bind(slide, this);
 
-				// clean up after the modal is hidden
-				this.$modal.on('hidden.bs.modal', _.bind(this.remove, this));
-			}
+			setTimeout(slide, 0);
 
-			this.$modal.modal('show');
-
-			return this;
-		},
-
-		renderContent: function (data) {
-			var html = this.contentTemplate(data);
-			this.$('#login-modal-content').html(html);
-
-			var $loginUsername = this.$('#login-username');
-			this.$modal.on('shown.bs.modal', function () {
-				$loginUsername.focus();
-			});
-			
 			return this;
 		},
 
 		remove: function () {
 			this.app.navigate('/');
-			Backbone.View.prototype.remove.call(this);
+
+			// move the body back
+			this.$body.css('left', 0);
+
+			var view = this;
+
+			// turn scrolling back on and remove the view
+			var finalize = _.once(function () {
+				view.$body.css('overflow', 'auto');
+				Backbone.View.prototype.remove.call(view);
+			});
+
+			// handler waiting for 'transitionend'
+			function handler(e) {
+				if ($(e.target).is('body')) {
+					finalize();
+					view.$body.off(e);
+				}
+			}
+
+			// timeout to ensure everything gets leaned up eventually
+			function timeout() {
+				finalize();
+				view.$body.off('transitionend', handler);
+			}
+
+			// finalize once the css transition has ended
+			this.$body.on('transitionend', handler);
+
+			// finalize after timeout to ensure the view is gone
+			setTimeout(timeout, 1000);
 		}
 	});
 });

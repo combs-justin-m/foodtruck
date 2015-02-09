@@ -1,7 +1,10 @@
 body {
+  position: relative;
   background: url("http://s3.amazonaws.com/codecademy-content/courses/ltp2/img/uber/black-thread.png") repeat;
   background-attachment: fixed;
   font-family: 'Ubuntu', sans-serif;
+  left: 0;
+  transition: left 0.75s linear;
 }
 
 .nav-pills > li > a,
