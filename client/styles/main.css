@@ -4,14 +4,13 @@ body {
   background-attachment: fixed;
   font-family: 'Ubuntu', sans-serif;
   left: 0;
-  transition: left 0.75s linear;
 }
 
 .nav-pills > li > a,
-        .nav-pills > li > a:hover,
-        .nav-pills > li > a:focus{
-            background-color: transparent;  
-        } 
+.nav-pills > li > a:hover,
+.nav-pills > li > a:focus{
+    background-color: transparent;  
+} 
 
 .header {
   background: url("http://s3.amazonaws.com/codecademy-content/courses/ltp2/img/uber/black-thread.png") repeat;
@@ -36,9 +35,16 @@ body {
   font-size: 18px;
 }
 
-.header .header-logout {
-  margin: 23px 12px;
+#header-admin-btn {
+  color: #fff;
+  margin: 16px 5px;
+  float: left;
+  background-color: transparent;
   font-size: 12px;
+}
+
+#header-admin-btn:hover { 
+  color: #fff;
 }
 
 .header .header-logo {

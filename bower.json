@@ -12,5 +12,8 @@
     "modernizr": "~2.8.3",
     "requirejs-text": "~2.0.13",
     "handlebars": "~2.0.0"
+  },
+  "devDependencies": {
+    "velocity": "~1.2.1"
   }
 }

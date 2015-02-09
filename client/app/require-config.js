@@ -12,7 +12,9 @@ requirejs.config({
         requirejs: '../bower_components/requirejs/require',
         'requirejs-handlebars': '../bower_components/requirejs-handlebars/hb',
         'requirejs-text': '../bower_components/requirejs-text/text',
-        underscore: '../bower_components/underscore/underscore'
+        underscore: '../bower_components/underscore/underscore',
+        velocity: '../bower_components/velocity/velocity',
+        'velocity.ui': '../bower_components/velocity/velocity.ui'
     },
     packages: [
 
@@ -31,6 +33,11 @@ requirejs.config({
         },
         modernizr: {
             exports: 'Modernizr'
+        },
+        velocity: {
+            deps: [
+                'jquery'
+            ]
         }
     }
 });

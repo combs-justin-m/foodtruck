@@ -4,15 +4,18 @@ define([
     'jquery',
     'underscore',
     'backbone',
+    'util/slide',
     'header/header',
     'menu/menu',
-    'login/login'],
-function($, _, Backbone, Header, Menu, Login) {
+    'login/login',
+    'admin/admin'],
+function($, _, Backbone, slide, Header, Menu, Login, Admin) {
 
     var App = Backbone.Router.extend({
 
     	routes: {
             '(/)': 'index',
+            'login(/)': 'login',
             'admin(/)': 'admin'
         },
 
@@ -21,26 +24,43 @@ function($, _, Backbone, Header, Menu, Login) {
                 Header.createView({ el: '#header', app: this }),
                 Menu.createView({ el: '#menu-container', app: this })
             ];
+            this.appendices = [];
         },
 
         index: function() {
-           this.render();
+            this.removeAppendices();
+            this.render();
+            slide({ to: 0 });
+        },
+
+        login: function() {
+            this.append(Login.createView({ app: this }));
+            this.render();
+            slide();
         },
 
         admin: function() {
+            var adminView = Admin.createView({ app: this });
+            this.append(adminView);
             this.render();
-
-            var view = Login.createView({ app: this });
-            this.append(view.render());
+            slide({ to: adminView.$el.width() });
         },
 
         render: function () {
              _.invoke(this.views, 'render');
+             _.invoke(this.appendices, 'render');
              return this;
         },
 
         append: function (view) {
-            $('body').append(view.el);
+            this.$body = this.$body || $('body');
+            this.appendices.push(view);
+            this.$body.append(view.el);
+        },
+
+        removeAppendices: function () {
+            _.invoke(this.appendices, 'remove');
+            this.appendices = [];
         }
     });
 

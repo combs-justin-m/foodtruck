@@ -5,21 +5,22 @@ function (Backbone, Auth) {
 	var HeaderView = Backbone.View.extend({
 
 		events: {
-			'click .header-logout': 'logout'
+			'click #header-admin-btn': 'admin'
 		},
 
-		initialize: function () {
+		initialize: function (options) {
+			this.app = options.app;
 			this.listenTo(Auth, 'change', this.render);
-			this.$logout = this.$('.header-logout');
+			this.$adminBtn = this.$('#header-admin-btn');
 		},
 
-		logout: function (e) {
+		admin: function (e) {
 			e.preventDefault();
-			Auth.deauthenticate();
+			this.app.navigate('/admin', { trigger: true });
 		},
 
 		render: function () {
-			this.$logout.toggleClass('invisible', !Auth.isAuthenticated());
+			this.$adminBtn.toggleClass('invisible', !Auth.isAuthenticated());
 		}
 	});
 
