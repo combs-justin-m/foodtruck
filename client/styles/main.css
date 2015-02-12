@@ -1,12 +1,51 @@
+/*****************************
+GENERAL
+******************************/
+
 body {
   background: url("http://s3.amazonaws.com/codecademy-content/courses/ltp2/img/uber/black-thread.png") repeat;
   background-attachment: fixed;
   font-family: 'Ubuntu', sans-serif;
 }
 
-.nav-pills > li > a,
-.nav-pills > li > a:hover,
-.nav-pills > li > a:focus{
+.banner {
+  min-height: 600px;
+  width: 100%;
+  background-color: #fff;
+}
+
+
+h1 {
+  font-size: 52px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 46px;
+  margin-bottom: 40px;
+}
+
+h3 {
+  font-size: 32px;
+}
+
+p {
+  font-size: 18px;
+}
+
+/*****************************
+HEADER
+******************************/
+.header ul li {
+  display: inline-block;
+}
+
+.nav > li > a:hover {
+  background-color: transparent;
+}
+
+.nav > li > a,
+.nav > li > a:focus{
     background-color: transparent;  
 } 
 
@@ -18,18 +57,21 @@ body {
   z-index: 1; 
 }
 
+.header a:hover {
+  color: #ffd42a;
+}
+
 .header .header-name {
   position: relative;
   font-size: 32px;
-  top: -22px;
-  margin-left: 5px;
+  padding: 10px;
+  top: 8px;
   text-decoration: none;
 }
 
 .header a {
   margin-top: 10px;
   color: #fff;
-  display: inline-block;
   font-size: 18px;
 }
 
@@ -51,8 +93,12 @@ body {
   height: 64px;
   width: 64px;
   margin-top: 0px;
-  
+  float: left;
 }
+
+/*****************************
+FOOTER
+******************************/
 
 .twitter {
   background-image: url("../images/twitter.png");
@@ -85,6 +131,10 @@ body {
   float: right;
 }
 
+/*****************************
+JUMBOTRON
+******************************/
+
 .jumbotron {
   height: 830px;
   background-image: url("../images/truck_backgrnd.jpg");
@@ -106,30 +156,9 @@ body {
   font-weight: bold;
 }
 
-.banner {
-  min-height: 600px;
-  width: 100%;
-  background-color: #fff;
-}
-
-
-h1 {
-  font-size: 52px;
-  text-align: center;
-}
-
-h2 {
-  font-size: 46px;
-  margin-bottom: 40px;
-}
-
-h3 {
-  font-size: 32px;
-}
-
-p {
-  font-size: 18px;
-}
+/*****************************
+BODY
+******************************/
 
 #location {
   position: relative;
