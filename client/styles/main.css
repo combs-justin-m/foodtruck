@@ -1,9 +1,7 @@
 body {
-  position: relative;
   background: url("http://s3.amazonaws.com/codecademy-content/courses/ltp2/img/uber/black-thread.png") repeat;
   background-attachment: fixed;
   font-family: 'Ubuntu', sans-serif;
-  left: 0;
 }
 
 .nav-pills > li > a,
@@ -202,7 +200,7 @@ p {
  }
 
 .carousel-control.right {
-    margin-right: -65px;
+    /*margin-right: -65px;*/
     background-image: none;
     color: black;
 }
