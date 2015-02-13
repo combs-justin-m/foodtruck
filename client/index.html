@@ -47,16 +47,15 @@
       <div class="container">  
         <div class="row">
       
-          <div class="col-lg-6">
+          <div class="col-md-6 col-xs-12 finder">
+            <div class="finder-spacer visible-md-block visible-lg-block"></div>
             <h2>Find Us.</h2>
               <p>We are always updating our location to help you find our truck.</p>
               <p>Miss us? Want to see us again? View our events schedule below to see where we are down the road.</p>
           </div>
-          <div class="col-lg-6">
+          <div class="col-md-6 col-xs-12">
               <div class="overlay" onClick="style.pointerEvents='none'"></div>
               <iframe id="map" width="500" height="400" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/view?zoom=12&center=33.9926%2C-83.7202&key=AIzaSyCp4qw80A3ygC-pRYcGTuJWIDPSirDqRV4"></iframe>
-              
-          
           </div>
         </div>
           <button  id="calendarbtn" type="button" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-chevron-down" style="font-size:32px;"></span></button>
@@ -104,48 +103,47 @@
 
     <div id="menu" class="banner">
       
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+        </ol>
 
-          <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-          <!-- Indicators -->
-          <ol class="carousel-indicators">
-            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-          </ol>
-
-          <!-- Wrapper for slides -->
-          <div class="container">
-          <div class="carousel-inner" role="listbox">
-            <div class="item active">
-              <img src="../images/food1.png" alt="...">
-              <div class="carousel-caption">
-                <h2>Entree</h2>
-                <h3>Cubano Humano Sand which wich?</h3>
-              </div>
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+          <div class="item active">
+            <img src="..." alt="...">
+            <div class="carousel-caption">
+              
             </div>
-         
           </div>
-          <!--
-            <div class="item">
-              <img src="..." alt="...">
-              <div class="carousel-caption">
-                ...
-              </div>
+          <div class="item">
+            <img src="..." alt="...">
+            <div class="carousel-caption">
+              
             </div>
-          -->
-            
           </div>
 
-          <!-- Controls -->
-          <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
+          <div class="item">
+            <img src="..." alt="...">
+            <div class="carousel-caption">
+              
+            </div>
+          </div>
         </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
 
     </div>
 
@@ -214,11 +212,17 @@
 
     <div class="footer">
       <div class="container">
-        <p>© Happy Beef Company 2015 | Beef and Barley - Winder, Ga (555)555-5555</p>
-          <a class="twitter" href="https://www.twitter.com" target="_blank"></a>
-          <a class="facebook" href="https://www.facebook.com/thehappybeefcompany" target="_blank"></a>
-          <a class="instagram" href="https://instagram.com" target="_blank"></a>
-        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <p>© Happy Beef Company 2015 | Beef and Barley - Winder, Ga (555)555-5555</p>
+          </div>
+          <div class="col-md-12">
+            <a class="twitter" href="https://www.twitter.com" target="_blank"></a>
+            <a class="facebook" href="https://www.facebook.com/thehappybeefcompany" target="_blank"></a>
+            <a class="instagram" href="https://instagram.com" target="_blank"></a>
+          </div>  
+        </div>    
+      </div>
     </div>
 
   <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
