@@ -189,22 +189,24 @@ FOOTER
 JUMBOTRON
 ******************************/
 
-.jumbo {
+.jumbotron {
   height: 830px;
-  background-image: url("../images/truck_backgrnd.jpg");
- /* background-repeat: no-repeat;
-  background-size: 100%;
-  text-align: center;*/
+  background: linear-gradient(0deg, #fff, transparent 50%),
+              #fff url("../images/truck_backgrnd.jpg") no-repeat center;
+
+  background-size: cover;
+  text-align: center;
   margin-bottom: 0;
   color: #fff;
 }
 
-/*.jumbotron .container {
+.jumbotron  {
   position: relative;
 }
-*/
+
 .jumbotron h1 {
   padding-top: 50px;
+  filter: none;
 }
 
 /*****************************
@@ -221,6 +223,7 @@ BODY
   top: 20px;
   margin-top: 25px;
 }
+
 .spacer {
   height: 115px;
 }
@@ -319,7 +322,7 @@ BODY
 }
 
 #catering {
-  padding-bottom: 20px;
+  text-align: center;
 }
 
 .form-control:focus, .form-control:focus + span .btn{
@@ -328,9 +331,7 @@ BODY
 }
 
 #contact-us {
-  padding-top: 40px;
-  margin: 0 auto;
-  width: 600px;
+  margin: 100px 0;
 }
 
 #parallax3 {
