@@ -1,11 +1,15 @@
 /*****************************
 GENERAL
 ******************************/
+* {
+  box-sizing: border-box;
+}
+
 
 body {
   background: url("http://s3.amazonaws.com/codecademy-content/courses/ltp2/img/uber/black-thread.png") repeat;
   background-attachment: fixed;
-  font-family: 'Ubuntu', sans-serif;
+  font: normal 1em/1.5  'Ubuntu', Helvetica, sans-serif;
 }
 
 .banner {
@@ -14,23 +18,74 @@ body {
   background-color: #fff;
 }
 
+img {
+  max-width: 100%;
+}
 
 h1 {
-  font-size: 52px;
+  font-size: 5.5rem;
   text-align: center;
 }
 
 h2 {
-  font-size: 46px;
-  margin-bottom: 40px;
+  font-size: 5rem;
+  margin-bottom: 50px;
 }
 
 h3 {
-  font-size: 32px;
+  font-size: 3.2rem;
 }
 
 p {
-  font-size: 18px;
+  font-size: 1.8rem;
+}
+
+/*****************************
+PARALLAX
+******************************/
+
+/* background setup */
+.background {
+    background-repeat:no-repeat;
+    /* custom background-position */
+    background-position:50% 50%;
+    /* ie8- graceful degradation */
+    background-position:50% 50%\9 !important;
+}
+
+/* fullscreen setup */
+html, body {
+    /* give this to all tags from html to .fullscreen */
+    height:500px;
+}
+.fullscreen,
+.content-a {
+    width:100%;
+    min-height:100%;
+}
+.not-fullscreen,
+.not-fullscreen .content-a,
+.fullscreen.not-overflow,
+.fullscreen.not-overflow .content-a {
+    height:100%;
+    overflow:hidden;
+}
+
+/* content centering styles */
+.content-a {
+  display:table;
+}
+.content-b {
+  display:table-cell;
+  padding-top: 10rem;
+  position:relative;
+  text-align:center;
+}
+
+/* visual styles */
+
+.not-fullscreen {
+    height:50%;
 }
 
 /*****************************
@@ -63,16 +118,17 @@ HEADER
 
 .header .header-name {
   position: relative;
-  font-size: 32px;
+  font-size: 3.2rem;
   padding: 10px;
   top: 8px;
   text-decoration: none;
 }
 
 .header a {
+  display: inline;
   margin-top: 10px;
   color: #fff;
-  font-size: 18px;
+  font-size: 1.8em;
 }
 
 #header-admin-btn {
@@ -120,7 +176,7 @@ FOOTER
 
 .footer {
   text-align: center;
-  padding: 10px 0;
+  padding: 1rem 0;
   color: #fff;
 }
 
@@ -133,25 +189,22 @@ FOOTER
 JUMBOTRON
 ******************************/
 
-.jumbotron {
+.jumbo {
   height: 830px;
   background-image: url("../images/truck_backgrnd.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  text-align: center;
-  border-bottom: 1px solid #777;
-  margin-bottom: 0px;
+ /* background-repeat: no-repeat;
+  background-size: 100%;
+  text-align: center;*/
+  margin-bottom: 0;
   color: #fff;
 }
 
-.jumbotron .container {
+/*.jumbotron .container {
   position: relative;
 }
-
+*/
 .jumbotron h1 {
   padding-top: 50px;
-  font-size: 60px;
-  font-weight: bold;
 }
 
 /*****************************
@@ -168,12 +221,8 @@ BODY
   top: 20px;
   margin-top: 25px;
 }
-.finder-spacer {
+.spacer {
   height: 115px;
-}
-
-#location h2 {
-  margin-bottom: 50px;
 }
 
 .overlay {
@@ -209,6 +258,7 @@ BODY
 }
 
 #calendar {
+  font-size: 1.5em;
   text-transform: uppercase;
   background-color: transparent;
   color: #fff;
@@ -218,14 +268,6 @@ BODY
   outline: 0 !important;
 }
 
-
-#parallax1 {
-  background-image: url("../images/parallax2.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  height: 600px;
-}
 
 #menu {
   text-align: center;
@@ -280,6 +322,11 @@ BODY
   padding-bottom: 20px;
 }
 
+.form-control:focus, .form-control:focus + span .btn{
+    border:3px solid #ffd42a;
+    box-shadow:none;
+}
+
 #contact-us {
   padding-top: 40px;
   margin: 0 auto;
@@ -289,9 +336,9 @@ BODY
 #parallax3 {
   background-image: url("../images/parallax1.jpg");
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100% auto;
+  min-height: 600px;
   background-attachment: fixed;
-  height: 600px;
 }
 
 #about {
