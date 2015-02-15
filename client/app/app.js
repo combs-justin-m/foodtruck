@@ -1,77 +1,26 @@
 'use strict';
 
 define([
-    'jquery',
-    'underscore',
-    'backbone',
-    'util/slide',
-    'header/header',
-    'menu/menu',
-    'login/login',
-    'admin/admin'],
-function($, _, Backbone, slide, Header, Menu, Login, Admin) {
+	'underscore',
+	'backbone',
+	'marionette',
+	'layout',
+	'components/domain/auth'
+], function (_, Backbone, Marionette, Layout, Auth) {
+	var App = new Marionette.Application();
 
-    var App = Backbone.Router.extend({
+	App.on('before:start', function () {
+		App.layout = new Layout();
+		App.auth = new Auth();
+	});
 
-    	routes: {
-            '(/)': 'index',
-            'login(/)': 'login',
-            'admin(/)': 'admin'
-        },
+	App.on('start', function () {
+		Backbone.history.start();
+	});
 
-        initialize: function() {
-            this.views = [
-                Header.createView({ el: '#header', app: this }),
-                Menu.createView({ el: '#menu-container', app: this })
-            ];
-            this.appendices = [];
-        },
+	App.on('route', function (fragment) {
+		Backbone.history.navigate(fragment, { trigger: true });
+	});
 
-        index: function() {
-            this.render();
-            slide(0, _.bind(this.removeAppendices, this));
-        },
-
-        login: function() {
-            this.append(Login.createView({ app: this }));
-            this.render();
-            slide();
-        },
-
-        admin: function() {
-            var adminView = Admin.createView({ app: this });
-            this.append(adminView);
-            this.render();
-            slide(adminView.$el.width());
-        },
-
-        render: function () {
-             _.invoke(this.views, 'render');
-             _.invoke(this.appendices, 'render');
-             return this;
-        },
-
-        append: function (view) {
-            this.$body = this.$body || $('body');
-            this.appendices.push(view);
-            this.$body.append(view.el);
-        },
-
-        removeAppendices: function () {
-            _.invoke(this.appendices, 'remove');
-            this.appendices = [];
-        }
-    });
-
-    return  {
-        start: function () {
-            if (this.app) {
-                return false;
-            }
-
-            this.app = new App();
-            Backbone.history.start();
-            return true;
-        }
-    };
+	return App;
 });

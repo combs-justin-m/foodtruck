@@ -11,6 +11,30 @@ body {
   font: normal 1em/1.5  'Ubuntu', Helvetica, sans-serif;
 }
 
+#main-container {
+  position: relative;
+  z-index: 10;
+}
+
+#main-overlay {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 15;
+  background-color: #000000;
+}
+
+#admin-login-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+}
+
 .banner {
   min-height: 600px;
   width: 100%;
@@ -130,7 +154,7 @@ HEADER
   font-size: 1.8em;
 }
 
-#header-admin-btn {
+#admin-panel-btn {
   color: #fff;
   margin: 16px 5px;
   float: left;
@@ -138,7 +162,7 @@ HEADER
   font-size: 12px;
 }
 
-#header-admin-btn:hover { 
+#admin-panel-btn:hover { 
   color: #fff;
 }
 

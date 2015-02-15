@@ -95,7 +95,6 @@ module.exports = function (grunt) {
     jshint: {
       options: {
         jshintrc: '.jshintrc',
-        ignores: ['client/app/templates.js'],
         reporter: require('jshint-stylish')
       },
       all: [
@@ -145,7 +144,8 @@ module.exports = function (grunt) {
       all: {
         rjsConfig: 'client/app/require-config.js',
         options: {
-          baseUrl: 'client/app'
+          baseUrl: 'client/app',
+          transitive: true
         }
       }
     },

@@ -1,9 +1,10 @@
 'use strict';
 
-define(['backbone', 'html!menu/menu.html', 'css!menu/menu.css'], 
+define(['backbone', 'html!main/menu/menu.html', 'css!main/menu/menu.css'], 
 function (Backbone, template) {
 
 	return Backbone.View.extend({
+		id: 'menu',
 		template: template,
 
 		events: {},

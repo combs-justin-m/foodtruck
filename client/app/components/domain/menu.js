@@ -1,11 +1,11 @@
 'use strict';
 
-define(['underscore', 'backbone', 'menu/menu.model'], 
-function (_, Backbone, MenuModel) {
+define(['underscore', 'backbone', 'components/domain/menu-item'], 
+function (_, Backbone, MenuItem) {
 
-	var MenuCollection = Backbone.Collection.extend({
+	var Menu = Backbone.Collection.extend({
 		url: '/api/menu',
-		model: MenuModel,
+		model: MenuItem,
 
 		// Group the data by category and sort by category size.
 		toJSON: function () {
@@ -32,5 +32,5 @@ function (_, Backbone, MenuModel) {
 		}
 	});
 
-	return MenuCollection;
+	return Menu;
 });

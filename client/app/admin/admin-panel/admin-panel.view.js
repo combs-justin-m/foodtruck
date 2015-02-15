@@ -2,16 +2,15 @@
 
 define([
 	'backbone',
-	'html!admin/admin.html', 
-	'css!admin/admin'], 
+	'html!admin/admin-panel/admin-panel.html', 
+	'css!admin/admin-panel/admin-panel.css'], 
 function (Backbone, template) {
 
 	var AdminView = Backbone.View.extend({
-		id: 'admin',
+		id: 'admin-panel',
 		template: template,
 
-		events: {
-		},
+		events: {},
 
 		initialize: function () {
 		},

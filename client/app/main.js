@@ -3,6 +3,8 @@
 require([
     'jquery', 
     'app',
+    'main/main.module',
+    'admin/admin.module',
     'bootstrap'], 
 function ($, App) {
     $(function () {
@@ -69,7 +71,7 @@ call fullscreenFix() if .fullscreen content changes */
 function fullscreenFix(){
     var h = $('body').height();
     // set .fullscreen height
-    $('.content-b').each(function(i){
+    $('.content-b').each(function(){
         if($(this).innerHeight() <= h){
             $(this).closest('.fullscreen').addClass('not-overflow');
         }
@@ -81,7 +83,7 @@ fullscreenFix();
 /* resize background images */
 function backgroundResize(){
     var windowH = $(window).height();
-    $('.background').each(function(i){
+    $('.background').each(function(){
         var path = $(this);
         // variables
         var contW = path.width();
@@ -95,7 +97,6 @@ function backgroundResize(){
         // remaining height to have fullscreen image only on parallax
         var remainingH = 0;
         if(path.hasClass('parallax') && !$('html').hasClass('touch')){
-            var maxH = contH > windowH ? contH : windowH;
             remainingH = windowH - contH;
         }
         // set img values depending on cont
@@ -117,19 +118,18 @@ $(window).focus(backgroundResize);
 backgroundResize();
 
 /* set parallax background-position */
-function parallaxPosition(e){
+function parallaxPosition(){
     var heightWindow = $(window).height();
     var topWindow = $(window).scrollTop();
     var bottomWindow = topWindow + heightWindow;
     var currentWindow = (topWindow + bottomWindow) / 2;
-    $('.parallax').each(function(i){
+    $('.parallax').each(function(){
         var path = $(this);
         var height = path.height();
         var top = path.offset().top;
         var bottom = top + height;
         // only when in range
         if(bottomWindow > top && topWindow < bottom){
-            var imgW = path.data('resized-imgW');
             var imgH = path.data('resized-imgH');
             // min when image touch top of window
             var min = 0;

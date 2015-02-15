@@ -1,32 +1,27 @@
-.login {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
+#login {
 	padding-top: 100px;
-	z-index: -1;
 }
 
-.login .panel {
+#login .panel {
 	border-radius: 25px;
 	border-color: #333;
 }
 
-.login .panel-heading {
+#login .panel-heading {
 	background-color: transparent;
 	color: #333;
 	border-color: #333;
 }
 
-.login .has-error {
+#login .has-error {
 	color: #a94442;
 }
 
-.login .panel-title {
+#login .panel-title {
 	font-size: 20px;
 }
 
-.login .btn {
+#login .btn {
 	color: #333;
 	background-color: #ffd42a;
 	border-radius: 25px;
@@ -34,7 +29,7 @@
 	border-color: #333;
 }
 
-.login .btn:focus {
+#login .btn:focus {
 	outline: 0;
 }
 

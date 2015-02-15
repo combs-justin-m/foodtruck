@@ -3,7 +3,7 @@
 define(['jquery', 'underscore', 'backbone', 'modernizr'], 
 function ($, _, Backbone, Modernizr) {
 
-	var AuthModel = Backbone.Model.extend({
+	var Auth = Backbone.Model.extend({
 
 		initialize: function () {
 			// Sync with localStorage
@@ -34,12 +34,12 @@ function ($, _, Backbone, Modernizr) {
 			function success(data) {
 				model.deauthenticate(); // ensure model is clear before setting data;
 				model.set(data);
-				model.trigger('auth:hello', data);
+				model.trigger('hello', data);
 			}
 
 			function failure(error) { 
 				error = error || defaultError;
-				model.trigger('auth:denied', error);
+				model.trigger('denied', error);
 			}
 
 			$.ajax({
@@ -64,7 +64,7 @@ function ($, _, Backbone, Modernizr) {
 			var wasAuthenticated = this.isAuthenticated();
 			this.clear();
 			if(wasAuthenticated) {
-				this.trigger('auth:goodbye');
+				this.trigger('goodbye');
 			}
 		},
 
@@ -73,5 +73,5 @@ function ($, _, Backbone, Modernizr) {
 		isAuthenticated: function () { return this.token() ? true : false; }
 	});
 
-	return AuthModel;
+	return Auth;
 });

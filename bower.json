@@ -11,9 +11,11 @@
     "requirejs-handlebars": "~0.1.1",
     "modernizr": "~2.8.3",
     "requirejs-text": "~2.0.13",
-    "handlebars": "~2.0.0"
+    "handlebars": "~2.0.0",
+    "velocity": "~1.2.1",
+    "marionette": "~2.3.2"
   },
-  "devDependencies": {
-    "velocity": "~1.2.1"
+  "resolutions": {
+    "underscore": "~1.7.0"
   }
 }
