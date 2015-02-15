@@ -5,7 +5,6 @@ GENERAL
   box-sizing: border-box;
 }
 
-
 body {
   background: url("http://s3.amazonaws.com/codecademy-content/courses/ltp2/img/uber/black-thread.png") repeat;
   background-attachment: fixed;
@@ -190,9 +189,9 @@ JUMBOTRON
 ******************************/
 
 .jumbotron {
-  height: 830px;
-  background: linear-gradient(0deg, #fff, transparent 50%),
-              #fff url("../images/truck_backgrnd.jpg") no-repeat center;
+  height: 950px;
+  background: linear-gradient(0deg, #fff, transparent 30%),
+              #fff url("../images/truck_night.jpg") no-repeat center;
 
   background-size: cover;
   text-align: center;
@@ -276,27 +275,24 @@ BODY
   text-align: center;
  }
 
- .carousel {
-  height: 600px;
-  width: 100%;
- }
+ 
+/*****************************
+CAROUSEL
+******************************/
+
 
 .carousel-control.right {
   width: 10%;
   background-image: none;
-  color: black;
 }
 
 
 .carousel-control.left {
   width: 10%;
   background-image: none;
-  color: black;
 }
 
 .carousel-caption {
-  font-size: 32px;
-  color: black;
   text-shadow: none;
 }
 
@@ -313,13 +309,15 @@ BODY
   width: 20px;
 }
 
-#parallax2 {
-  background-image: url("../images/parallax3.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  height: 600px;
+.carousel-inner > .item > img {
+  height: none;
+  max-height: 600px;
+  width:  100%;
 }
+
+/*****************************
+FORM
+******************************/
 
 #catering {
   text-align: center;
@@ -331,18 +329,24 @@ BODY
 }
 
 #contact-us {
-  margin: 100px 0;
+  margin: 180px 0;
 }
 
-#parallax3 {
-  background-image: url("../images/parallax1.jpg");
-  background-repeat: no-repeat;
-  background-size: 100% auto;
-  min-height: 600px;
-  background-attachment: fixed;
-}
 
 #about {
   background-color: #ffd42a;
   text-align: center;
 }
+
+#about img {
+  margin: 75px 0 0;
+}
+
+#about p {
+  margin-bottom: 60px;
+}
+
+#work_photo {
+  
+}
+

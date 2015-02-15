@@ -159,7 +159,8 @@ if(!$('html').hasClass('touch')){
 // lkjasdhvaskdjvbsd;vksdbfv;ksdbvldskv
 
 
-
+$('.carousel').carousel({
+    })
 
 
 
