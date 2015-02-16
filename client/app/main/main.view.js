@@ -25,7 +25,7 @@ function (Backbone, App) {
 		},
 
 		render: function () {
-			this.$adminPanelBtn.toggleClass('invisible', !App.auth.isAuthenticated());
+			this.$adminPanelBtn.toggleClass('hidden', !App.auth.isAuthenticated());
 		}
 	});
 

@@ -67,6 +67,10 @@ p {
 PARALLAX
 ******************************/
 
+.parallax {
+  height: 500px;
+}
+
 /* background setup */
 .background {
     background-repeat:no-repeat;
@@ -90,7 +94,7 @@ html, body {
 .not-fullscreen .content-a,
 .fullscreen.not-overflow,
 .fullscreen.not-overflow .content-a {
-    height:100%;
+    /* height:100%; */
     overflow:hidden;
 }
 

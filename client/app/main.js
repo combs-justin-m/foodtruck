@@ -160,7 +160,7 @@ if(!$('html').hasClass('touch')){
 
 
 $('.carousel').carousel({
-    })
+    });
 
 
 
