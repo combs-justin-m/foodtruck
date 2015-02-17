@@ -51,10 +51,36 @@ function ($, App) {
             }
             
         });
+
+        // MENU scroll animation
+        $('#menubtn').click(function() {
+            var $window = $(window);
+            var $menu = $('#dropmenu');
+
+            var open = $menu.is('.in');
+
+            $menu.collapse('toggle'); 
+
+            if (!open) {
+                var windowBottom = $window.scrollTop() + $window.height();
+                var menuHeight = $menu[0].scrollHeight;
+                var menuBottom = $menu.offset().top + menuHeight;
+
+                var scrollAmount = menuBottom - windowBottom;
+
+                if (scrollAmount > 0) {
+                    $('html, body').animate({
+                        scrollTop: $window.scrollTop() + scrollAmount
+                    }, 350);
+                }
+            }
+            
+        });
+
     });
 
 
-// asdfsdfsdfsfasdfsadfsafsa
+// START PARALLAX CODE
 
 
 /* detect touch */
@@ -156,11 +182,9 @@ if(!$('html').hasClass('touch')){
 }
 
 
-// lkjasdhvaskdjvbsd;vksdbfv;ksdbvldskv
+// END PARALLAX CODE
 
 
-$('.carousel').carousel({
-    });
 
 
 

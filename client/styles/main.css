@@ -13,7 +13,7 @@ body {
 
 #main-container {
   position: relative;
-  z-index: 10;
+  z-index: 5;
 }
 
 #main-overlay {
@@ -39,6 +39,11 @@ body {
   min-height: 600px;
   width: 100%;
   background-color: #fff;
+}
+
+.titlespace {
+  top: 20px;
+  margin-top: 25px;
 }
 
 img {
@@ -122,6 +127,10 @@ HEADER
   display: inline-block;
 }
 
+.nav {
+  clear: both;
+}
+
 .nav > li > a:hover {
   background-color: transparent;
 }
@@ -131,12 +140,16 @@ HEADER
     background-color: transparent;  
 } 
 
-.header {
+#header {
   background: url("http://s3.amazonaws.com/codecademy-content/courses/ltp2/img/uber/black-thread.png") repeat;
   height: 64px;
   width: 100%;
   position: fixed;
-  z-index: 1; 
+  z-index: 10; 
+}
+
+#header .container {
+  position: absolute;
 }
 
 .header a:hover {
@@ -147,7 +160,7 @@ HEADER
   position: relative;
   font-size: 3.2rem;
   padding: 10px;
-  top: 8px;
+  top: 5px;
   text-decoration: none;
 }
 
@@ -245,12 +258,6 @@ BODY
   text-align: center;
 }
 
-
-.finder {
-  top: 20px;
-  margin-top: 25px;
-}
-
 .spacer {
   height: 115px;
 }
@@ -265,7 +272,7 @@ BODY
    margin-top:-400px;  /* your iframe height */
 }
 
-#map {
+.map {
   width: 100%;
   margin: 100px 0;
 }
@@ -298,16 +305,17 @@ BODY
   outline: 0 !important;
 }
 
+/*****************************
+CAROUSEL
+******************************/
 
 #menu {
   text-align: center;
  }
 
- 
-/*****************************
-CAROUSEL
-******************************/
-
+.carousel {
+  margin-top: 85px;
+}
 
 .carousel-control.right {
   width: 10%;
@@ -318,10 +326,6 @@ CAROUSEL
 .carousel-control.left {
   width: 10%;
   background-image: none;
-}
-
-.carousel-caption {
-  text-shadow: none;
 }
 
 .carousel-indicators li {
@@ -342,6 +346,40 @@ CAROUSEL
   max-height: 600px;
   width:  100%;
 }
+
+#menu p {
+    margin-bottom: 60px;
+}
+
+#menu h2 {
+  margin-top: 60px;
+}
+
+#menubtn {
+  margin: 10px 0;
+  background-color: #ffd42a;
+  border-radius: 100%;
+  border: 5px solid black;
+  width: 80px;
+  height: 80px;
+}
+
+#menubtn span {
+  position: relative;
+  top: 4px;
+}
+
+#dropmenu {
+  font-size: 1.5em;
+  text-transform: uppercase;
+  background-color: transparent;
+  color: #fff;
+}
+
+.ar {
+  text-align: right;
+}
+
 
 /*****************************
 FORM
@@ -367,14 +405,73 @@ FORM
 }
 
 #about img {
-  margin: 75px 0 0;
+  margin: 70px 0 0;
 }
 
 #about p {
   margin-bottom: 60px;
 }
 
-#work_photo {
-  
+/*****************************
+FORM
+******************************/
+
+@media (max-width: 768px) {
+  #header {
+    position: relative;
+  }
+  #header .container {
+    width: 100%;
+  }
+  #contact-us {
+    margin: 80px 0 0 0;
+  }
 }
 
+
+@media (max-width: 640px) {
+  body h2 {
+    margin: 0 0 20px 0;
+  }
+  #pHide {
+    display: none;
+  }
+  .overlay {
+    display: none;
+  }
+  .titlespace {
+    margin: 0;
+  }
+  .banner {
+    height: 500px;
+  }
+  .jumbotron h1 {
+    margin: 0;
+    padding-top: 0;
+  }
+  .carousel {
+    display: none;
+  }
+  .header .header-name{
+    top: 17px;
+    font-size: 2rem;
+  }
+  #menu h2 {
+    margin-top: 130px;
+  }
+  .container {
+    padding: 0 40px;
+  }
+  .map {
+    margin: 20px 0;
+    height: 280px;
+  }
+  #about img {
+  margin: 30px 0;
+  height: 280px;
+  }
+  #calendarbtn {
+  position: absolute;
+  margin: 5px 0 0 -50px;
+  }
+}
