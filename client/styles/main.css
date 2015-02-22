@@ -137,15 +137,15 @@ HEADER
 
 .nav > li > a,
 .nav > li > a:focus{
-    background-color: transparent;  
-} 
+    background-color: transparent;
+}
 
 #header {
   background: url("http://s3.amazonaws.com/codecademy-content/courses/ltp2/img/uber/black-thread.png") repeat;
   height: 64px;
   width: 100%;
   position: fixed;
-  z-index: 10; 
+  z-index: 10;
 }
 
 #header .container {
@@ -179,7 +179,7 @@ HEADER
   font-size: 12px;
 }
 
-#admin-panel-btn:hover { 
+#admin-panel-btn:hover {
   color: #fff;
 }
 
@@ -264,8 +264,8 @@ BODY
 
 .overlay {
   z-index: 1;
-   background: transparent; 
-   position:relative; 
+   background: transparent;
+   position:relative;
    width:100%;
    height:400px; /* your iframe height */
    top:500px;  /* your iframe height */
@@ -280,13 +280,14 @@ BODY
 #calendarbtn {
 
   position: absolute;
-  margin: -90px 0 0 -50px;
-  text-align: center;
+  bottom: 0;
+  margin: 30px 0 0 -40px;
   background-color: #ffd42a;
   border-radius: 100%;
   border: 5px solid black;
   width: 80px;
   height: 80px;
+  cursor: pointer;
 }
 
 #calendarbtn span {
@@ -310,8 +311,9 @@ CAROUSEL
 ******************************/
 
 #menu {
+  position: relative;
   text-align: center;
- }
+}
 
 .carousel {
   margin-top: 85px;
@@ -342,22 +344,23 @@ CAROUSEL
 }
 
 .carousel-inner > .item > img {
-  height: none;
-  max-height: 600px;
   width:  100%;
 }
 
 #menu h2 {
-  margin-top: 60px;
+  margin-top: 80px;
 }
 
 #menubtn {
-  margin: 35px 0 10px 0;
+  position: absolute;
+  bottom: 0;
+  margin: 30px 0 0 -40px;
   background-color: #ffd42a;
   border-radius: 100%;
   border: 5px solid black;
   width: 80px;
   height: 80px;
+  cursor: pointer;
 }
 
 #menubtn span {
@@ -409,7 +412,7 @@ FORM
 }
 
 /*****************************
-FORM
+@MEDIA
 ******************************/
 
 @media (max-width: 768px) {
@@ -422,6 +425,12 @@ FORM
   #contact-us {
     margin: 90px 0 0 0;
   }
+  .pHide {
+    display: none;
+  }
+  #menu p {
+    margin-bottom: 120px;
+  }
 }
 
 
@@ -430,9 +439,6 @@ FORM
     margin: 0 0 20px 0;
     font-size: 3.8rem;
   }
-  .pHide {
-    display: none;
-  }
   .overlay {
     display: none;
   }
@@ -440,7 +446,7 @@ FORM
     margin: 0;
   }
   .banner {
-    height: 500px;
+    min-height: 500px;
   }
   .jumbotron h1 {
     margin: 0;
@@ -451,9 +457,6 @@ FORM
   }
   .carousel .carousel-caption p{
     display: none;
-  }
-  #menubtn {
-    margin: 40px 0 0 0;
   }
   .header .header-name{
     top: 17px;
@@ -466,12 +469,11 @@ FORM
     margin: 20px 0;
     height: 270px;
   }
-  #about img {
+  #menu h2 {
+    margin-top: 70px;
+  }
+   #about img {
     margin: 30px 0 40px 0;
     height: 250px;
-  }
-  #calendarbtn {
-    position: absolute;
-    margin: 30px 0 0 -50px;
   }
 }
