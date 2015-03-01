@@ -1,17 +1,18 @@
 'use strict';
 
 require([
-    'jquery', 
+    'jquery',
     'app',
     'main/main.module',
     'admin/admin.module',
-    'bootstrap'], 
+    'bootstrap'],
 function ($, App) {
     $(function () {
         App.start();
 
-        // Menu animated scroll
-        $('a[href^="#"]').on('click', function(event) {
+
+        // Header animated scroll
+        $('a[data-scroll]').on('click', function(event) {
 
             var target = $( $(this).attr('href') );
 
@@ -27,14 +28,14 @@ function ($, App) {
 
         });
 
-        // Callendar scroll animation
+        // Calendar scroll animation
         $('#calendarbtn').click(function() {
             var $window = $(window);
             var $calendar = $('#calendar');
 
             var open = $calendar.is('.in');
 
-            $calendar.collapse('toggle'); 
+            $calendar.collapse('toggle');
 
             if (!open) {
                 var windowBottom = $window.scrollTop() + $window.height();
@@ -49,7 +50,7 @@ function ($, App) {
                     }, 350);
                 }
             }
-            
+
         });
 
         // MENU scroll animation
@@ -59,7 +60,7 @@ function ($, App) {
 
             var open = $menu.is('.in');
 
-            $menu.collapse('toggle'); 
+            $menu.collapse('toggle');
 
             if (!open) {
                 var windowBottom = $window.scrollTop() + $window.height();
@@ -74,7 +75,7 @@ function ($, App) {
                     }, 350);
                 }
             }
-            
+
         });
 
     });

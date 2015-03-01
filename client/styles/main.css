@@ -41,6 +41,14 @@ body {
   background-color: #fff;
 }
 
+.spacer {
+  height: 115px;
+}
+
+.spacer2 {
+  height: 80px;
+}
+
 .titlespace {
   top: 20px;
   margin-top: 25px;
@@ -184,7 +192,7 @@ HEADER
 }
 
 .header .header-logo {
-  background-image: url("../images/LOGOscale.svg");
+  background-image: url("../images/LOGOsmall.png");
   background-repeat: no-repeat;
   height: 64px;
   width: 64px;
@@ -256,10 +264,6 @@ BODY
 #location {
   position: relative;
   text-align: center;
-}
-
-.spacer {
-  height: 115px;
 }
 
 .overlay {
@@ -428,13 +432,19 @@ FORM
   .pHide {
     display: none;
   }
-  #menu p {
+  #menu > div > div > div > p {
     margin-bottom: 120px;
   }
 }
 
 
 @media (max-width: 640px) {
+  .container {
+    padding: 0 40px;
+  }
+  .header .container {
+    padding-right: 0;
+  }
   body h2 {
     margin: 0 0 20px 0;
     font-size: 3.8rem;
@@ -459,14 +469,11 @@ FORM
     display: none;
   }
   .header .header-name{
-    top: 17px;
-    font-size: 2rem;
-  }
-  .container {
-    padding: 0 40px;
+    top: 13px;
+    font-size: 2.5rem;
   }
   .map {
-    margin: 20px 0;
+    margin: 20px 0 90px 0;
     height: 270px;
   }
   #menu h2 {
